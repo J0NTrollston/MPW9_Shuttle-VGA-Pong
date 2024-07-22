@@ -28,7 +28,8 @@ module display(
     output wire g,
     output wire b,
     
-    input wire [9:0] leftPaddle
+    input wire [9:0] leftPaddle,
+    input wire [9:0] rightPaddle
 
     );
     
@@ -36,7 +37,7 @@ wire inside_border, verticle_lines, horizontal_lines;
 wire white; //colors
 
 //temp
-wire leftPaddleEn;
+wire leftPaddleEn, rightPaddleEn;
 //wire leftPaddle = 220;
     
 //Make sure all pixels are drawn in the border
@@ -55,10 +56,15 @@ assign horizontal_lines = ((column >= 20) && (column <= 620) && (row == 20))
 assign leftPaddleEn = ((column >=40 && column <= 43) 
     && (row >= (leftPaddle-25) && row <= (leftPaddle+25))) ? 1'b1 : 1'b0;
     
+//This is where on the screen the right pong paddle will be drawn
+//size is 3 x 51(w x l)
+assign rightPaddleEn = (column >=597 && column <= 600) 
+    && (row >= (rightPaddle-25) && row <= (rightPaddle+25)) ? 1'b1 : 1'b0;
+    
 assign r = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
 assign g = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
 assign b = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
 
-assign white = verticle_lines || horizontal_lines || leftPaddleEn;
+assign white = verticle_lines || horizontal_lines || leftPaddleEn || rightPaddleEn;
     
 endmodule

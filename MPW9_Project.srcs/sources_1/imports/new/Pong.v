@@ -39,9 +39,9 @@ Output:
     7.
     8.
 Bidirectional:
-    1. ja[0]
-    2. ja[1]
-    3. ja[2]
+    1. ja[0] in 
+    2. ja[1] out
+    3. ja[2] out
     4. 
     5. 
     6.
@@ -64,12 +64,17 @@ module Pong(
     output wire g,
     output wire b,
     
-    input wire ja0_data,
-    output wire [1:0] ja12_clk_latch   
+    inout wire [2:0] NES_Controller_Left,
+    inout wire [2:0] NES_Controller_Right
+//    input wire ja0_data,
+//    output wire [1:0] ja12_clk_latch   
     );
     
-wire [9:0] cw_NESController;
-wire [1:0] sw_NESController;
+wire [9:0] cw_NESController_Left;
+wire [1:0] sw_NESController_Left;
+
+wire [9:0] cw_NESController_Right;
+wire [1:0] sw_NESController_Right;
     
 datapath datapath(
     .clk(clk),
@@ -82,16 +87,27 @@ datapath datapath(
     .r(r),
     .g(g),
     .b(b),
-    .cw_NESController(cw_NESController),
-    .sw_NESController(sw_NESController),
-    .ja0_data(ja0_data),
-    .ja12_clk_latch(ja12_clk_latch));
+    .cw_NESController_Left(cw_NESController_Left),
+    .sw_NESController_Left(sw_NESController_Left),
+    .cw_NESController_Right(cw_NESController_Right),
+    .sw_NESController_Right(sw_NESController_Right),
+    
+    .NES_Controller_Left(NES_Controller_Left),
+    .NES_Controller_Right(NES_Controller_Right)
+//    .ja0_data(ja0_data),
+//    .ja12_clk_latch(ja12_clk_latch)
+    );
 
     
 control_unit control_unit(
     .clk(clk),
     .reset_n(reset_n),
-    .cw_NESController(cw_NESController),
-    .sw_NESController(sw_NESController));
+    
+    .cw_NESController_Left(cw_NESController_Left),
+    .sw_NESController_Left(sw_NESController_Left),
+    
+    .cw_NESController_Right(cw_NESController_Right),
+    .sw_NESController_Right(sw_NESController_Right)
+    );
     
 endmodule

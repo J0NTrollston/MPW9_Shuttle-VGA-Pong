@@ -34,6 +34,7 @@ set_property board_part digilentinc.com:nexys_video:part0:1.2 [current_project]
 set_property ip_output_repo c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
+  C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/NES_Controller_FSM.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/control_unit.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/counter.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/datapath.v
@@ -55,8 +56,8 @@ set_property used_in_implementation false [get_files -all c:/Users/wrwrb/OneDriv
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/constrs_1/imports/new/vga.xdc
-set_property used_in_implementation false [get_files C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/constrs_1/imports/new/vga.xdc]
+read_xdc C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/constrs_1/new/MPW9_Constraints.xdc
+set_property used_in_implementation false [get_files C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/constrs_1/new/MPW9_Constraints.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

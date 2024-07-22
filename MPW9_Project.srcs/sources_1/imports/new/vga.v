@@ -33,7 +33,8 @@ module vga(
     output wire g,
     output wire b,
     
-    input wire [9:0] leftPaddle);
+    input wire [9:0] leftPaddle,
+    input wire [9:0] rightPaddle);
 
 
 wire col_roll; //End of horizontal line and inc row counter
@@ -61,7 +62,8 @@ display display(
     .r(r_s),
     .g(g_s),
     .b(b_s),
-    .leftPaddle(leftPaddle));
+    .leftPaddle(leftPaddle),
+    .rightPaddle(rightPaddle));
     
 assign h_sync = ((column_s >= 655) && (column_s < 751)) ? 1'b0 : 1'b1;
 assign v_sync = ((row_s >= 489) && (row_s < 491)) ? 1'b0 : 1'b1;

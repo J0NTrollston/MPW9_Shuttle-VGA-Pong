@@ -35,20 +35,29 @@ module datapath(
     output wire g,
     output wire b,
     
-    input wire [9:0] cw_NESController,
-    output wire [1:0] sw_NESController,
+    input wire [9:0] cw_NESController_Left,
+    output wire [1:0] sw_NESController_Left,
+    
+    input wire [9:0] cw_NESController_Right,
+    output wire [1:0] sw_NESController_Right,
     
 //    inout wire [7:0] ja
-    input wire ja0_data,
-    output wire [1:0] ja12_clk_latch  
+//    input wire ja0_data,
+//    output wire [1:0] ja12_clk_latch 
+    inout wire [2:0] NES_Controller_Left,
+    inout wire [2:0] NES_Controller_Right 
     );
     
 
 
 //wire roll;
-reg [7:0] NES_activity, old_NES;
-reg [7:0] NES_wire;
+reg [7:0] NES_activity_Left, old_NES_Left;
+reg [7:0] NES_wire_Left;
 reg [9:0] leftPaddle;
+
+reg [7:0] NES_activity_Right, old_NES_Right;
+reg [7:0] NES_wire_Right;
+reg [9:0] rightPaddle;
 
 
 video video(
@@ -63,15 +72,22 @@ video video(
     .r(r),
     .g(g),
     .b(b),
-    .leftPaddle(leftPaddle));
+    .leftPaddle(leftPaddle),
+    .rightPaddle(rightPaddle));
     
     
 //If using Artix-7 FPGA then counter should be 601 to delay for 6us otherwise 152 when setting up the ASIC
 Counter #(.countLimit(601)) NES_counter(
     .clk(clk),
     .reset_n(reset_n),
-    .ctrl(cw_NESController[1:0]),
-    .roll(sw_NESController[0]));
+    .ctrl(cw_NESController_Left[1:0]),
+    .roll(sw_NESController_Left[0]));
+    
+Counter #(.countLimit(601)) NES_counter_right(
+    .clk(clk),
+    .reset_n(reset_n),
+    .ctrl(cw_NESController_Right[1:0]),
+    .roll(sw_NESController_Right[0]));
     
 //assign sw_NESController[1] = roll;
 
@@ -80,70 +96,108 @@ Counter #(.countLimit(601)) NES_counter(
 Counter #(.countLimit(1666666)) NES_delay_counter(
     .clk(clk),
     .reset_n(reset_n),
-    .ctrl(cw_NESController[9:8]),
-    .roll(sw_NESController[1]));
+    .ctrl(cw_NESController_Left[9:8]),
+    .roll(sw_NESController_Left[1]));
+    
+Counter #(.countLimit(1666666)) NES_delay_counter_right(
+    .clk(clk),
+    .reset_n(reset_n),
+    .ctrl(cw_NESController_Right[9:8]),
+    .roll(sw_NESController_Right[1]));
 
 
 always @(posedge clk) begin
     if(reset_n == 1'b0)
-        NES_wire <= 8'b0;
+        NES_wire_Left <= 8'b0;
     else begin
-        case(cw_NESController[7:4])
-            4'b0001 : NES_wire[7] <= ja0_data;
-            4'b0010 : NES_wire[6] <= ja0_data;
-            4'b0011 : NES_wire[5] <= ja0_data;
-            4'b0100 : NES_wire[4] <= ja0_data;
-            4'b0101 : NES_wire[3] <= ja0_data;
-            4'b0110 : NES_wire[2] <= ja0_data;
-            4'b0111 : NES_wire[1] <= ja0_data;
-            4'b1000 : NES_wire[0] <= ja0_data;
-            default: NES_wire <= 8'b11111111;
+        case(cw_NESController_Left[7:4])
+            4'b0001 : NES_wire_Left[7] <= NES_Controller_Left[0];
+            4'b0010 : NES_wire_Left[6] <= NES_Controller_Left[0];
+            4'b0011 : NES_wire_Left[5] <= NES_Controller_Left[0];
+            4'b0100 : NES_wire_Left[4] <= NES_Controller_Left[0];
+            4'b0101 : NES_wire_Left[3] <= NES_Controller_Left[0];
+            4'b0110 : NES_wire_Left[2] <= NES_Controller_Left[0];
+            4'b0111 : NES_wire_Left[1] <= NES_Controller_Left[0];
+            4'b1000 : NES_wire_Left[0] <= NES_Controller_Left[0];
+            default: NES_wire_Left <= 8'b11111111;
+        endcase
+    end
+end
+
+always @(posedge clk) begin
+    if(reset_n == 1'b0)
+        NES_wire_Right <= 8'b0;
+    else begin
+        case(cw_NESController_Left[7:4])
+            4'b0001 : NES_wire_Right[7] <= NES_Controller_Right[0];
+            4'b0010 : NES_wire_Right[6] <= NES_Controller_Right[0];
+            4'b0011 : NES_wire_Right[5] <= NES_Controller_Right[0];
+            4'b0100 : NES_wire_Right[4] <= NES_Controller_Right[0];
+            4'b0101 : NES_wire_Right[3] <= NES_Controller_Right[0];
+            4'b0110 : NES_wire_Right[2] <= NES_Controller_Right[0];
+            4'b0111 : NES_wire_Right[1] <= NES_Controller_Right[0];
+            4'b1000 : NES_wire_Right[0] <= NES_Controller_Right[0];
+            default: NES_wire_Right <= 8'b11111111;
         endcase
     end
 end
 
     
 always @(posedge clk) begin
-    NES_activity <= (old_NES ^ (~NES_wire) ) & ~NES_wire;
+    NES_activity_Left <= (old_NES_Left ^ (~NES_wire_Left) ) & ~NES_wire_Left;
     if(reset_n == 1'b0) begin
-        old_NES <= 8'd0;
+        old_NES_Left <= 8'd0;
         leftPaddle <= 10'd220;
     end
 
-    if(NES_activity[6] == 1'b1) begin //reset
+    if(NES_activity_Left[6] == 1'b1) begin //reset
         leftPaddle <= 10'd220;
-        NES_activity <= 8'd0;
-        old_NES <= 8'd0;
-    end else if(NES_activity[3] == 1'b1) begin
+        NES_activity_Left <= 8'd0;
+        old_NES_Left <= 8'd0;
+    end else if(NES_activity_Left[3] == 1'b1) begin
         if(leftPaddle - 4'd10 >= 45)
             leftPaddle <= leftPaddle - 4'd10;
-    end else if(NES_activity[2] == 1'b1) begin
+    end else if(NES_activity_Left[2] == 1'b1) begin
         if(leftPaddle + 4'd10 <= 395)
             leftPaddle <= leftPaddle + 4'd10;
     end
     
-    old_NES <= ~NES_wire;
+    old_NES_Left <= ~NES_wire_Left;
+end
+
+always @(posedge clk) begin
+    NES_activity_Right <= (old_NES_Right ^ (~NES_wire_Right) ) & ~NES_wire_Right;
+    if(reset_n == 1'b0) begin
+        old_NES_Right <= 8'd0;
+        rightPaddle <= 10'd220;
+    end
+
+    if(NES_activity_Right[6] == 1'b1) begin //reset
+        rightPaddle <= 10'd220;
+        NES_activity_Right <= 8'd0;
+        old_NES_Right <= 8'd0;
+    end else if(NES_activity_Right[3] == 1'b1) begin
+        if(rightPaddle - 4'd10 >= 45)
+            rightPaddle <= rightPaddle - 4'd10;
+    end else if(NES_activity_Right[2] == 1'b1) begin
+        if(rightPaddle + 4'd10 <= 395)
+            rightPaddle <= rightPaddle + 4'd10;
+    end
+    
+    old_NES_Right <= ~NES_wire_Right;
 end
 
 
 
 	
 //NES communication logic            
-//assign ja[2] = (cw_NESController[3] == 1'b1) ? 1'b1 : 1'b0; 
-//assign ja12_clk_latch[1] = (cw_NESController[3] == 1'b1) ? 1'b1 : 1'b0; 
-assign ja12_clk_latch[1] = cw_NESController[3];
-//assign ja[1] = (cw_NESController[2] == 1'b1) ? 1'b1 : 1'b0; 
-//assign ja12_clk_latch[0] = (cw_NESController[2] == 1'b1) ? 1'b1 : 1'b0;
-assign ja12_clk_latch[0] = cw_NESController[2];
+assign NES_Controller_Left[1] = cw_NESController_Left[2];
+assign NES_Controller_Left[2] = cw_NESController_Left[3];
+
+assign NES_Controller_Right[1] = cw_NESController_Right[2];
+assign NES_Controller_Right[2] = cw_NESController_Right[3];
    
-//assign NES_wire[7] = (cw_NESController[7:4] == 4'b0001) ? ja[0] : 1'b1; //--Directional Pad A
-//assign NES_wire[6] = (cw_NESController[7:4] == 4'b0010) ? ja[0] : 1'b1; //--Directional Pad B
-//assign NES_wire[5] = (cw_NESController[7:4] == 4'b0011) ? ja[0] : 1'b1; //--Directional Pad Select
-//assign NES_wire[4] = (cw_NESController[7:4] == 4'b0100) ? ja[0] : 1'b1; //--Directional Pad Start
-//assign NES_wire[3] = (cw_NESController[7:4] == 4'b0101) ? ja[0] : 1'b1; //--Directional Pad Up
-//assign NES_wire[2] = (cw_NESController[7:4] == 4'b0110) ? ja[0] : 1'b1; //--Directional Pad Down
-//assign NES_wire[1] = (cw_NESController[7:4] == 4'b0111) ? ja[0] : 1'b1; //--Directional Pad Left
-//assign NES_wire[0] = (cw_NESController[7:4] == 4'b1000) ? ja[0] : 1'b1; //--Directional Pad Right    
+  
     
-assign led = ~NES_wire;
+//assign led = ~NES_wire;
 endmodule
