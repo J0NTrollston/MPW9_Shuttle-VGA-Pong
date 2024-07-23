@@ -63,17 +63,19 @@ reg [9:0] rightPaddle;
 video video(
     .clk(clk),
     .reset_n(reset_n),
-    
-//    .switch(switch),
-//    .led(led),
-    
+
     .h_sync(h_sync),
     .v_sync(v_sync),
     .r(r),
     .g(g),
     .b(b),
+    
     .leftPaddle(leftPaddle),
-    .rightPaddle(rightPaddle));
+    .rightPaddle(rightPaddle),
+    
+    .ball_center_x(ball_center_x),
+    .ball_center_y(ball_center_y)
+    );
     
     
 //If using Artix-7 FPGA then counter should be 601 to delay for 6us otherwise 152 when setting up the ASIC

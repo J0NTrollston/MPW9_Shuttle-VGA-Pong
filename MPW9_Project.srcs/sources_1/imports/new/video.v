@@ -32,8 +32,13 @@ module video(
     output wire r,
     output wire g,
     output wire b,
+    
     input wire [9:0] leftPaddle,
-    input wire [9:0] rightPaddle);
+    input wire [9:0] rightPaddle,
+    
+    input wire [9:0] ball_center_x,
+    input wire [9:0] ball_center_y
+    );
     
     
 wire reset = !reset_n; //clock wizzard reset is active high
@@ -60,7 +65,12 @@ vga vga(
     .r(r),
     .g(g),
     .b(b),
+    
     .leftPaddle(leftPaddle),
-    .rightPaddle(rightPaddle));
+    .rightPaddle(rightPaddle),
+    
+    .ball_center_x(ball_center_x),
+    .ball_center_y(ball_center_y)
+    );
     
 endmodule
