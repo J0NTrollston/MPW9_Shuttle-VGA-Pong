@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Jul 24 19:26:28 2024
-# Process ID: 35980
+# Start of session at: Thu Jul 25 13:41:34 2024
+# Process ID: 34780
 # Current directory: C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1
 # Command line: vivado.exe -log Pong.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Pong.tcl
 # Log file: C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/Pong.vds

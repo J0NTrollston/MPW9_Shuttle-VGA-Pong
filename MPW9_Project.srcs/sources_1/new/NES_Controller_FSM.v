@@ -1,15 +1,16 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: TinyTapeout 8
+// Engineer: Brandon S. Ramos
 // 
 // Create Date: 07/22/2024 01:39:22 PM
 // Design Name: 
-// Module Name: NES_Controller_FSM
-// Project Name: 
+// Module Name: NES_Controller_FSM.v
+// Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: Finite State Machine to read in the NES Controller button presses
+//              The NES Controller Handler: https://tresi.github.io/nes/
 // 
 // Dependencies: 
 // 
@@ -19,12 +20,13 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module NES_Controller_FSM(
     input clk,
     input reset_n,
+    
     input wire [1:0] sw_NESController,
-    output wire [9:0]cw_NESController);
+    output wire [9:0]cw_NESController
+    );
     
 //FSM states for grabbing the NES Controller input
 localparam [4:0]Reset = 5'd0,
@@ -47,7 +49,6 @@ localparam [4:0]Reset = 5'd0,
                 Right_low = 5'd17,
                 Pulse_hi = 5'd18;
 reg [4:0]state_NESController;
-
 
 always @(posedge clk) begin
     if(reset_n == 1'b0)
@@ -196,6 +197,5 @@ assign cw_NESController =
     (state_NESController == Right_low)  ? 10'b00_1000_0_0_01 :
     (state_NESController == Pulse_hi)   ? 10'b00_0000_0_1_01 :
                                           10'b00_0000_0_0_01;
-
-    
+                                          
 endmodule

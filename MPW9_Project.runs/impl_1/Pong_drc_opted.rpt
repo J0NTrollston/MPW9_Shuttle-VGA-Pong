@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Wed Jul 24 19:27:31 2024
+| Date         : Thu Jul 25 13:42:40 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_drc -file Pong_drc_opted.rpt -pb Pong_drc_opted.pb -rpx Pong_drc_opted.rpx
 | Design       : Pong
@@ -36,8 +36,8 @@ Table of Contents
 -----------------
 PLHOLDVIO-2#1 Warning
 Non-Optimal connections which could lead to hold violations  
-A LUT datapath/temp/sw_ballMovement_reg[2]_i_2 is driving clock pin of 23 cells. This could lead to large hold time violations. Involved cells are:
-datapath/ballFunction/ball_center_x_proc_reg[0], datapath/ballFunction/ball_center_x_proc_reg[1], datapath/ballFunction/ball_center_x_proc_reg[2], datapath/ballFunction/ball_center_x_proc_reg[3], datapath/ballFunction/ball_center_x_proc_reg[4], datapath/ballFunction/ball_center_x_proc_reg[5], datapath/ballFunction/ball_center_x_proc_reg[6], datapath/ballFunction/ball_center_x_proc_reg[7], datapath/ballFunction/ball_center_x_proc_reg[8], datapath/ballFunction/ball_center_x_proc_reg[9], datapath/ballFunction/ball_center_y_proc_reg[0], datapath/ballFunction/ball_center_y_proc_reg[1], datapath/ballFunction/ball_center_y_proc_reg[2], datapath/ballFunction/ball_center_y_proc_reg[3], datapath/ballFunction/ball_center_y_proc_reg[4] (the first 15 of 23 listed)
+A LUT datapath/temp/ball_center_x_proc[9]_i_4 is driving clock pin of 20 cells. This could lead to large hold time violations. Involved cells are:
+datapath/ballFunction/ball_center_x_proc_reg[0], datapath/ballFunction/ball_center_x_proc_reg[1], datapath/ballFunction/ball_center_x_proc_reg[2], datapath/ballFunction/ball_center_x_proc_reg[3], datapath/ballFunction/ball_center_x_proc_reg[4], datapath/ballFunction/ball_center_x_proc_reg[5], datapath/ballFunction/ball_center_x_proc_reg[6], datapath/ballFunction/ball_center_x_proc_reg[7], datapath/ballFunction/ball_center_x_proc_reg[8], datapath/ballFunction/ball_center_x_proc_reg[9], datapath/ballFunction/ball_center_y_proc_reg[0], datapath/ballFunction/ball_center_y_proc_reg[1], datapath/ballFunction/ball_center_y_proc_reg[2], datapath/ballFunction/ball_center_y_proc_reg[3], datapath/ballFunction/ball_center_y_proc_reg[4] (the first 15 of 20 listed)
 Related violations: <none>
 
 RPBF-3#1 Warning

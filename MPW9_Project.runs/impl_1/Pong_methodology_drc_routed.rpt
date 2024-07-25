@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Wed Jul 24 19:28:26 2024
+| Date         : Thu Jul 25 13:43:51 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Pong_methodology_drc_routed.rpt -pb Pong_methodology_drc_routed.pb -rpx Pong_methodology_drc_routed.rpx
 | Design       : Pong
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 36
+             Violations found: 33
 +-----------+------------------+----------------------------------------------------+------------+
 | Rule      | Severity         | Description                                        | Violations |
 +-----------+------------------+----------------------------------------------------+------------+
 | TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree | 1          |
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                        | 23         |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                        | 20         |
 | TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin          | 1          |
 | TIMING-18 | Warning          | Missing input or output delay                      | 10         |
 | XDCC-2    | Warning          | Scoped Non-Timing constraint/property overwritten  | 1          |
@@ -139,21 +139,6 @@ Related violations: <none>
 TIMING-17#20 Critical Warning
 Non-clocked sequential cell  
 The clock pin datapath/ballFunction/ball_center_y_proc_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#21 Critical Warning
-Non-clocked sequential cell  
-The clock pin datapath/sw_ballMovement_reg_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#22 Critical Warning
-Non-clocked sequential cell  
-The clock pin datapath/sw_ballMovement_reg_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#23 Critical Warning
-Non-clocked sequential cell  
-The clock pin datapath/sw_ballMovement_reg_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-27#1 Critical Warning

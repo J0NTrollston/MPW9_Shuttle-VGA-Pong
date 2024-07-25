@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Wed Jul 24 19:28:26 2024
+| Date             : Thu Jul 25 13:43:51 2024
 | Host             : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command          : report_power -file Pong_power_routed.rpt -pb Pong_power_summary_routed.pb -rpx Pong_power_routed.rpx
 | Design           : Pong
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.003 |        6 |       --- |             --- |
-| Slice Logic    |     0.001 |      939 |       --- |             --- |
-|   LUT as Logic |     0.001 |      528 |    133800 |            0.39 |
+| Slice Logic    |     0.002 |      950 |       --- |             --- |
+|   LUT as Logic |     0.001 |      540 |    133800 |            0.40 |
 |   CARRY4       |    <0.001 |       83 |     33450 |            0.25 |
 |   Register     |    <0.001 |      210 |    267600 |            0.08 |
-|   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |     0.001 |      545 |       --- |             --- |
+|   Others       |     0.000 |       14 |       --- |             --- |
+| Signals        |     0.001 |      560 |       --- |             --- |
 | MMCM           |     0.115 |        1 |        10 |           10.00 |
-| I/O            |     0.002 |       21 |       285 |            7.37 |
+| I/O            |     0.002 |       13 |       285 |            4.56 |
 | Static Power   |     0.139 |          |           |                 |
 | Total          |     0.261 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.036 |       0.005 |      0.031 |
+| Vccint    |       1.000 |     0.036 |       0.006 |      0.031 |
 | Vccaux    |       1.800 |     0.094 |       0.064 |      0.031 |
 | Vcco33    |       3.300 |     0.005 |       0.000 |      0.005 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -146,7 +146,7 @@ Table of Contents
 +------------------+-----------+
 | Pong             |     0.122 |
 |   datapath       |     0.120 |
-|     ballFunction |     0.001 |
+|     ballFunction |     0.002 |
 |     video        |     0.116 |
 |       clk_wiz_0  |     0.115 |
 +------------------+-----------+

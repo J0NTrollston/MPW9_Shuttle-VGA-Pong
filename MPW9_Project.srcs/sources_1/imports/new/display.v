@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: TinyTapeout 8
+// Engineer: Brandon S. Ramos
 // 
 // Create Date: 07/15/2024 08:46:47 PM
 // Design Name: 
-// Module Name: display
-// Project Name: 
+// Module Name: display.v
+// Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: Location of the objects and where to display pixels
 // 
 // Dependencies: 
 // 
@@ -18,7 +18,6 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
 
 module display(
     input wire [9:0] column,
@@ -35,21 +34,14 @@ module display(
     input wire [9:0] ball_center_y
     );
     
-wire inside_border, verticle_lines, horizontal_lines;
-wire white; //colors
-
-//temp
-wire leftPaddleEn, rightPaddleEn, ball;
-//wire leftPaddle = 220;
-//wire [9:0] ball_center_y = 240;
-//wire [9:0] ball_center_x = 320;
+wire inside_border, verticle_lines, horizontal_lines, white, leftPaddle_en, rightPaddle_en, ball;
     
 //Make sure all pixels are drawn in the border
 assign inside_border = ((column>=20 && column<=620) || (row>=20 && row <=460)) ? 1'b1 : 1'b0;
 
 //verticle border lines
 assign verticle_lines = ((row >= 20) && (row <= 420) && (column == 20)) 
-    || ((row >= 20) && (row <= 420) && (column == 620)) ? 1'b1 : 1'b0;  
+                            || ((row >= 20) && (row <= 420) && (column == 620)) ? 1'b1 : 1'b0;  
     
 //horizontal border lines
 assign horizontal_lines = ((column >= 20) && (column <= 620) && (row == 20)) 
@@ -124,18 +116,18 @@ assign ball =  ((column == ball_center_x) && (row == ball_center_y-4))
                             
 //This is where on the screen the left pong paddle will be drawn 
 //size is 3 x 51(w x l)
-assign leftPaddleEn = ((column >=40 && column <= 43) 
+assign leftPaddle_en = ((column >=40 && column <= 43) 
     && (row >= (leftPaddle-25) && row <= (leftPaddle+25))) ? 1'b1 : 1'b0;
     
 //This is where on the screen the right pong paddle will be drawn
 //size is 3 x 51(w x l)
-assign rightPaddleEn = (column >=597 && column <= 600) 
+assign rightPaddle_en = (column >=597 && column <= 600) 
     && (row >= (rightPaddle-25) && row <= (rightPaddle+25)) ? 1'b1 : 1'b0;
     
+assign white = verticle_lines || horizontal_lines || leftPaddle_en || rightPaddle_en || ball;
+
 assign r = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
 assign g = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
 assign b = ((inside_border == 1'b1) && (white == 1'b1)) ? 1'b1 : 1'b0;
-
-assign white = verticle_lines || horizontal_lines || leftPaddleEn || rightPaddleEn || ball;
     
 endmodule

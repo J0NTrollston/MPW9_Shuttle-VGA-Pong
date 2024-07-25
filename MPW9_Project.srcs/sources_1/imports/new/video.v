@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: TinyTapeout 8
+// Engineer: Brandon S. Ramos
 // 
 // Create Date: 07/14/2024 09:34:48 PM
 // Design Name: 
-// Module Name: video
-// Project Name: 
+// Module Name: video.v
+// Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: Intermediate module for the VGA display interface
 // 
 // Dependencies: 
 // 
@@ -19,14 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module video(
     input wire clk,
     input wire reset_n,
-    
-//    input wire switch, // for testing light 
-//    output wire led,
-    
+
+    //VGA timing and picture
     output wire h_sync,
     output wire v_sync,
     output wire r,
@@ -40,9 +37,8 @@ module video(
     input wire [9:0] ball_center_y
     );
     
-    
 wire reset = !reset_n; //clock wizzard reset is active high
-wire pixel_clk;
+wire pixel_clk; //temp
     
 /*
 Temp pixel clock to run the VGA at 60Hz 
@@ -52,14 +48,14 @@ Resolution: 640x480 @60Hz
 clk_wiz_0 clk_wiz_0(
     .clk_in1(clk),
     .reset(reset),
-    .clk_out1(pixel_clk));
-    
+    .clk_out1(pixel_clk)
+    );
     
 vga vga(
     .clk(pixel_clk),
     .reset_n(reset_n),
-//    .switch(switch),
-//    .led(led),
+
+    //VGA timing and picture
     .h_sync(h_sync),
     .v_sync(v_sync),
     .r(r),

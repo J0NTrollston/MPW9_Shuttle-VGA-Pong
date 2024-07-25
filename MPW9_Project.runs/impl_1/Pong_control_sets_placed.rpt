@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Wed Jul 24 19:27:34 2024
+| Date         : Thu Jul 25 13:42:44 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Pong_control_sets_placed.rpt
 | Design       : Pong
@@ -40,12 +40,12 @@ Table of Contents
 |       Fanout       | Count |
 +--------------------+-------+
 | Total control sets |    16 |
-| >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     1 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     2 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     7 |
-| >= 12 to < 14      |     1 |
+| >= 10 to < 12      |     8 |
+| >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     6 |
 +--------------------+-------+
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              15 |            5 |
+| No           | No                    | No                     |              11 |            5 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              16 |            5 |
+| No           | Yes                   | No                     |              20 |            9 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             179 |           62 |
+| Yes          | Yes                   | No                     |             179 |           61 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,21 +73,21 @@ Table of Contents
 +-----------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------+----------------+
 |               Clock Signal              |                                  Enable Signal                                  |                               Set/Reset Signal                               | Slice Load Count | Bel Load Count |
 +-----------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------+----------------+
-|  datapath/temp/CLK                      |                                                                                 |                                                                              |                1 |              3 |
-|  clk_IBUF_BUFG                          |                                                                                 | datapath/p_2_in_0                                                            |                2 |              5 |
-|  datapath/video/clk_wiz_0/inst/clk_out1 | datapath/video/vga/Column_Counter/processQ0                                     | datapath/video/vga/Column_Counter/processQ[9]_i_1_n_0                        |                5 |             10 |
-|  datapath/video/clk_wiz_0/inst/clk_out1 | datapath/video/vga/Row_Counter/processQ0                                        | datapath/video/vga/Row_Counter/processQ[9]_i_1__0_n_0                        |                4 |             10 |
-|  clk_IBUF_BUFG                          | datapath/leftPaddle[9]_i_1_n_0                                                  | datapath/p_2_in_0                                                            |                7 |             10 |
-|  clk_IBUF_BUFG                          | datapath/rightPaddle[9]_i_1_n_0                                                 | datapath/NES_activity_Right[6]                                               |                5 |             10 |
-|  clk_IBUF_BUFG                          | datapath/NES_counter/processQ0                                                  | control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0]  |                4 |             10 |
-|  clk_IBUF_BUFG                          | datapath/NES_counter_right/processQ0                                            | control_unit/NES_Controller_Right/FSM_onehot_state_NESController_reg[0]_0[0] |                4 |             10 |
-|  clk_IBUF_BUFG                          |                                                                                 | control_unit/NES_Controller_Left/reset_n                                     |                3 |             11 |
-|  clk_IBUF_BUFG                          |                                                                                 |                                                                              |                4 |             12 |
-|  clk_IBUF_BUFG                          | control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_1_n_0     | control_unit/NES_Controller_Left/reset_n                                     |                4 |             19 |
+|  clk_IBUF_BUFG                          |                                                                                 | datapath/p_0_in_1                                                            |                1 |              4 |
+|  clk_IBUF_BUFG                          |                                                                                 | datapath/NES_activity_Right_reg_n_0_[5]                                      |                4 |              5 |
+|  clk_IBUF_BUFG                          | datapath/rightPaddle[9]_i_1_n_0                                                 | datapath/NES_activity_Right_reg_n_0_[5]                                      |                7 |             10 |
+|  clk_IBUF_BUFG                          | datapath/leftPaddle[9]_i_2_n_0                                                  | datapath/leftPaddle[9]_i_1_n_0                                               |                6 |             10 |
+|  clk_IBUF_BUFG                          | datapath/NES_counter_left/processQ0                                             | control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0]  |                3 |             10 |
+|  clk_IBUF_BUFG                          | datapath/NES_counter_right/processQ0                                            | control_unit/NES_Controller_Right/FSM_onehot_state_NESController_reg[0]_0[0] |                3 |             10 |
+|  datapath/video/clk_wiz_0/inst/clk_out1 | datapath/video/vga/Column_Counter/processQ0                                     | datapath/video/vga/Column_Counter/processQ[9]_i_1__0_n_0                     |                4 |             10 |
+|  datapath/video/clk_wiz_0/inst/clk_out1 | datapath/video/vga/Row_Counter/processQ0                                        | datapath/video/vga/Row_Counter/processQ[9]_i_1_n_0                           |                4 |             10 |
+|  clk_IBUF_BUFG                          |                                                                                 |                                                                              |                5 |             11 |
+|  clk_IBUF_BUFG                          |                                                                                 | control_unit/NES_Controller_Left/reset_n                                     |                4 |             11 |
+|  clk_IBUF_BUFG                          | control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_1_n_0     | control_unit/NES_Controller_Left/reset_n                                     |                5 |             19 |
 |  clk_IBUF_BUFG                          | control_unit/NES_Controller_Right/FSM_onehot_state_NESController[18]_i_1__0_n_0 | control_unit/NES_Controller_Left/reset_n                                     |                4 |             19 |
 |  clk_IBUF_BUFG                          | datapath/temp/processQ0                                                         | datapath/temp/processQ[0]_i_1__5_n_0                                         |                5 |             19 |
 |  datapath/temp/CLK                      | control_unit/E[0]                                                               | control_unit/SR[0]                                                           |                8 |             20 |
-|  clk_IBUF_BUFG                          | datapath/NES_delay_counter/processQ0                                            | datapath/NES_delay_counter/processQ[0]_i_1__3_n_0                            |                6 |             21 |
+|  clk_IBUF_BUFG                          | datapath/NES_delay_counter_left/processQ0                                       | datapath/NES_delay_counter_left/processQ[0]_i_1__3_n_0                       |                6 |             21 |
 |  clk_IBUF_BUFG                          | datapath/NES_delay_counter_right/processQ0                                      | datapath/NES_delay_counter_right/processQ[0]_i_1__4_n_0                      |                6 |             21 |
 +-----------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------------+----------------+
 

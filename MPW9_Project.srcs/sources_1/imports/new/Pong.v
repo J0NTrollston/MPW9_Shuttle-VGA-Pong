@@ -5,6 +5,7 @@
 // 
 // Create Date: 07/15/2024 08:21:31 PM
 // Design Name: 
+// Module Name: Pong.v
 // Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
@@ -38,12 +39,12 @@ Output:
     7.
     8.
 Bidirectional:
-    1. ja[0] in 
-    2. ja[1] out
-    3. ja[2] out
-    4. 
-    5. 
-    6.
+    1. NES_Controller_Left[0]
+    2. NES_Controller_Left[1]
+    3. NES_Controller_Left[2]
+    4. NES_Controller_Right[0]
+    5. NES_Controller_Right[1]
+    6. NES_Controller_Right[2]
     7.
     8.
 */
@@ -52,10 +53,6 @@ module Pong(
     input wire clk,
     input wire reset_n, //A7 FPGA uses active low reset signal
     
-    // for testing light 
-//    input wire switch, 
-    output wire [7:0] led,
-    
     //VGA timing and picture
     output wire h_sync,
     output wire v_sync,
@@ -63,12 +60,12 @@ module Pong(
     output wire g,
     output wire b,
     
+    //NES Controller input for left/right
     inout wire [2:0] NES_Controller_Left,
     inout wire [2:0] NES_Controller_Right
-//    input wire ja0_data,
-//    output wire [1:0] ja12_clk_latch   
     );
-    
+
+//Interconnecting wires between modules
 wire [9:0] cw_NESController_Left;
 wire [1:0] sw_NESController_Left;
 
@@ -82,42 +79,45 @@ datapath datapath(
     .clk(clk),
     .reset_n(reset_n),
     
-    .led(led),
-    
+    //VGA timing and picture
     .h_sync(h_sync),
     .v_sync(v_sync),
     .r(r),
     .g(g),
     .b(b),
     
+    //NES left controller FSM I/O from datapath to control unit
     .cw_NESController_Left(cw_NESController_Left),
     .sw_NESController_Left(sw_NESController_Left),
     
+    //NES right controller FSM I/O from datapath to control unit
     .cw_NESController_Right(cw_NESController_Right),
     .sw_NESController_Right(sw_NESController_Right),
     
+    //NES Controller input for left/right
     .NES_Controller_Left(NES_Controller_Left),
     .NES_Controller_Right(NES_Controller_Right),
     
+    //Ball Movement FSM I/O from datapath to control unit
     .sw_ballMovement(sw_ballMovement),
     .cw_ballMovement(cw_ballMovement)
-//    .ja0_data(ja0_data),
-//    .ja12_clk_latch(ja12_clk_latch)
     );
 
     
 control_unit control_unit(
     .clk(clk),
-    .reset_n(reset_n),
+    .reset_n(reset_n), //Artix-7 reset is active low
     
+    //NES left controller FSM I/O from datapath to control unit
     .cw_NESController_Left(cw_NESController_Left),
     .sw_NESController_Left(sw_NESController_Left),
     
+    //NES right controller FSM I/O from datapath to control unit
     .cw_NESController_Right(cw_NESController_Right),
     .sw_NESController_Right(sw_NESController_Right),
     
+    //Ball Movement FSM I/O from datapath to control unit
     .sw_ballMovement(sw_ballMovement),
     .cw_ballMovement(cw_ballMovement)
-    );
-    
+    );  
 endmodule

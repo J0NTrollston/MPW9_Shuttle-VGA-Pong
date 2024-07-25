@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: TinyTapeout 8
+// Engineer: Brandon S. Ramos
 // 
 // Create Date: 07/15/2024 08:20:09 PM
 // Design Name: 
-// Module Name: control_unit
-// Project Name: 
+// Module Name: control_unit.v
+// Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: Control Unit for the Finite State Machines used
 // 
 // Dependencies: 
 // 
@@ -19,17 +19,19 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module control_unit(
     input wire clk,
     input wire reset_n,
     
+    //NES left controller FSM I/O from datapath to control unit
     input wire [1:0] sw_NESController_Left,
     output wire [9:0]cw_NESController_Left,
     
+    //NES right controller FSM I/O from datapath to control unit
     input wire [1:0] sw_NESController_Right,
     output wire [9:0]cw_NESController_Right,
     
+    //Ball Movement FSM I/O from datapath to control unit
     input wire [3:0] sw_ballMovement,
     output wire [3:0] cw_ballMovement
     );
@@ -43,7 +45,7 @@ localparam [2:0]Reset = 3'd0,
 reg [2:0]state_ballMovement;
 
 
-
+//Left controller FSM
 NES_Controller_FSM NES_Controller_Left(
     .clk(clk),
     .reset_n(reset_n),
@@ -52,6 +54,7 @@ NES_Controller_FSM NES_Controller_Left(
     
 );
 
+//Right controller FSM
 NES_Controller_FSM NES_Controller_Right(
     .clk(clk),
     .reset_n(reset_n),
@@ -60,12 +63,16 @@ NES_Controller_FSM NES_Controller_Right(
     
 );
 
+/**********************************************************************
+Set Word Table
 
-// sw: 0001 - hit right paddle
-//     0010 - hit left paddle
-//     0100 - hit top border
-//     1000 - hit bottom border
-
+sw: 0001 - hit right paddle
+    0010 - hit left paddle
+    0100 - hit top border
+    1000 - hit bottom border
+    
+The process below will determine the direction of travel for the ball
+**********************************************************************/
 always @(posedge clk) begin
     if(reset_n == 1'b0)
         state_ballMovement <= UpLeft;
@@ -117,19 +124,20 @@ always @(posedge clk) begin
         endcase
     end
 end
-//-----------------------------------------------------------------------------------
-//    --		Control Word Table
-//    --      
-//    -- Data_read        
-//    -- 0001 - +x, +y        
-//    -- 0010 - -x, -y       
-//    -- 0100 - +x, -y       
-//    -- 1000 - -x, +y                     
-//    -----------------------------------------------------------------------------------
+
+/*************************************************************************************
+Control Word Table
+
+Data_read        
+0001 - +x, +y        
+0010 - -x, -y       
+0100 - +x, -y       
+0011 - -x, +y   
+//*************************************************************************************/
 assign cw_ballMovement = (state_ballMovement == UpRight) ? 4'b0100 :
                          (state_ballMovement == UpLeft) ? 4'b0010 :
                          (state_ballMovement == DownLeft) ? 4'b0011 :
                          (state_ballMovement == Reset) ? 4'b0101 :
                          4'b0001; //downright
-
+                         
 endmodule
