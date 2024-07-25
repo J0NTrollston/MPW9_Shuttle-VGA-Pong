@@ -39,12 +39,12 @@ Output:
     7.
     8.
 Bidirectional:
-    1. NES_Controller_Left[0]
-    2. NES_Controller_Left[1]
-    3. NES_Controller_Left[2]
-    4. NES_Controller_Right[0]
-    5. NES_Controller_Right[1]
-    6. NES_Controller_Right[2]
+    1. NES_Controller_Left[0] data
+    2. NES_Controller_Left[1] clock
+    3. NES_Controller_Left[2] latch
+    4. NES_Controller_Right[0] data
+    5. NES_Controller_Right[1] clock
+    6. NES_Controller_Right[2] latch
     7.
     8.
 */
@@ -54,17 +54,20 @@ module Pong(
     input wire reset_n, //A7 FPGA uses active low reset signal
     
     //VGA timing and picture
-    output wire h_sync,
-    output wire v_sync,
-    output wire r,
-    output wire g,
-    output wire b,
+//    output wire h_sync,
+//    output wire v_sync,
+//    output wire r,
+//    output wire g,
+//    output wire b,
     
     //NES Controller input for left/right
-    inout wire [2:0] NES_Controller_Left,
-    inout wire [2:0] NES_Controller_Right
+//    inout wire [2:0] NES_Controller_Left,
+//    inout wire [2:0] NES_Controller_Right
+    input wire [7:0] in,
+    output wire [7:0] out,
+    inout wire [7:0] bidir
     );
-
+    
 //Interconnecting wires between modules
 wire [9:0] cw_NESController_Left;
 wire [1:0] sw_NESController_Left;
@@ -74,6 +77,9 @@ wire [1:0] sw_NESController_Right;
 
 wire [3:0] sw_ballMovement;
 wire [3:0] cw_ballMovement;
+
+wire [2:0] NES_Controller_Left, NES_Controller_Right;
+wire h_sync, v_sync, r, g, b;
     
 datapath datapath(
     .clk(clk),
@@ -119,5 +125,9 @@ control_unit control_unit(
     //Ball Movement FSM I/O from datapath to control unit
     .sw_ballMovement(sw_ballMovement),
     .cw_ballMovement(cw_ballMovement)
-    );  
+    ); 
+    
+assign out = {h_sync, v_sync, r, g, b, 3'b000};
+assign bidir = {NES_Controller_Left[0], NES_Controller_Left[1], NES_Controller_Left[2], NES_Controller_Right[0], NES_Controller_Right[1], NES_Controller_Right[2], 2'b00};
+
 endmodule

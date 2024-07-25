@@ -37,22 +37,8 @@ module video(
     input wire [9:0] ball_center_y
     );
     
-wire reset = !reset_n; //clock wizzard reset is active high
-wire pixel_clk; //temp
-    
-/*
-Temp pixel clock to run the VGA at 60Hz 
-pixel_clk: 25.175MHz
-Resolution: 640x480 @60Hz
-*/
-clk_wiz_0 clk_wiz_0(
-    .clk_in1(clk),
-    .reset(reset),
-    .clk_out1(pixel_clk)
-    );
-    
 vga vga(
-    .clk(pixel_clk),
+    .clk(clk),
     .reset_n(reset_n),
 
     //VGA timing and picture

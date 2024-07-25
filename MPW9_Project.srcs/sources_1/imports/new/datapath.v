@@ -85,7 +85,7 @@ video video(
     
 // Used to create the 6us delay to read the left NES controller   
 //If using Artix-7 FPGA then counter should be 601 to delay for 6us otherwise 152 when setting up the ASIC
-Counter #(.countLimit(601)) NES_counter_left(
+Counter #(.countLimit(152)) NES_counter_left(
     .clk(clk),
     .reset_n(reset_n),
     
@@ -94,7 +94,7 @@ Counter #(.countLimit(601)) NES_counter_left(
     );
     
 // Used to create the 6us delay to read the right NES controller   
-Counter #(.countLimit(601)) NES_counter_right(
+Counter #(.countLimit(152)) NES_counter_right(
     .clk(clk),
     .reset_n(reset_n),
     
@@ -104,7 +104,7 @@ Counter #(.countLimit(601)) NES_counter_right(
 
 //Polls the Left NES controler button presses 60Hz  
 //If using Artix-7 FPGA then counter should be 1666666 to delay for 60Hz otherwise 419583 when setting up the ASIC
-Counter #(.countLimit(1666666)) NES_delay_counter_left(
+Counter #(.countLimit(419583)) NES_delay_counter_left(
     .clk(clk),
     .reset_n(reset_n),
     
@@ -113,7 +113,7 @@ Counter #(.countLimit(1666666)) NES_delay_counter_left(
     );
 
 //Polls the right NES controler button presses 60Hz  
-Counter #(.countLimit(1666666)) NES_delay_counter_right(
+Counter #(.countLimit(419583)) NES_delay_counter_right(
     .clk(clk),
     .reset_n(reset_n),
     
@@ -122,7 +122,7 @@ Counter #(.countLimit(1666666)) NES_delay_counter_right(
     );
 
 // Controls how fast the ball moves
-Counter #(.countLimit(400000)) temp(
+Counter #(.countLimit(100000)) temp(
     .clk(clk),
     .reset_n(reset_n),
     

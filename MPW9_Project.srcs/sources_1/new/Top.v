@@ -24,15 +24,31 @@ module Top(
     input wire clk,
     input wire reset_n, //A7 FPGA uses active low reset signal
     
-    //VGA timing and picture
-    output wire h_sync,
-    output wire v_sync,
-    output wire r,
-    output wire g,
-    output wire b,
+    input wire [7:0] in,
+    output wire [7:0] out,
+    inout wire [7:0] bidir
+    );
     
-    //NES Controller input for left/right
-    inout wire [2:0] NES_Controller_Left,
-    inout wire [2:0] NES_Controller_Right
+wire reset = ~reset_n;
+wire pixel_clk;
+    
+Pong Pong(
+    .clk(pixel_clk),
+    .reset_n(reset_n), //A7 FPGA uses active low reset signal
+    
+    .in(in),
+    .out(out),
+    .bidir(bidir)
+    );
+    
+/*
+Temp pixel clock to run the VGA at 60Hz 
+pixel_clk: 25.175MHz
+Resolution: 640x480 @60Hz
+*/
+clk_wiz_0 clk_wiz_0(
+    .clk_in1(clk),
+    .reset(reset),
+    .clk_out1(pixel_clk)
     );
 endmodule
