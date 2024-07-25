@@ -77,7 +77,7 @@ set rc [catch {
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
   add_files -quiet C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/Pong.dcp
-  read_ip -quiet c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   read_xdc C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/constrs_1/new/MPW9_Constraints.xdc
   link_design -top Pong -part xc7a200tsbg484-1
   close_msg_db -file init_design.pb

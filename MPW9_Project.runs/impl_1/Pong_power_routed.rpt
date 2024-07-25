@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Mon Jul 22 16:22:52 2024
+| Date             : Wed Jul 24 19:28:26 2024
 | Host             : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command          : report_power -file Pong_power_routed.rpt -pb Pong_power_summary_routed.pb -rpx Pong_power_routed.rpx
 | Design           : Pong
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.258        |
+| Total On-Chip Power (W)  | 0.261        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.119        |
+| Dynamic (W)              | 0.122        |
 | Device Static (W)        | 0.139        |
 | Effective TJA (C/W)      | 3.3          |
 | Max Ambient (C)          | 84.1         |
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        6 |       --- |             --- |
-| Slice Logic    |    <0.001 |      496 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      238 |    133800 |            0.18 |
-|   CARRY4       |    <0.001 |       24 |     33450 |            0.07 |
-|   Register     |    <0.001 |      156 |    267600 |            0.06 |
-|   Others       |     0.000 |       12 |       --- |             --- |
-| Signals        |    <0.001 |      355 |       --- |             --- |
+| Clocks         |     0.003 |        6 |       --- |             --- |
+| Slice Logic    |     0.001 |      939 |       --- |             --- |
+|   LUT as Logic |     0.001 |      528 |    133800 |            0.39 |
+|   CARRY4       |    <0.001 |       83 |     33450 |            0.25 |
+|   Register     |    <0.001 |      210 |    267600 |            0.08 |
+|   Others       |     0.000 |       16 |       --- |             --- |
+| Signals        |     0.001 |      545 |       --- |             --- |
 | MMCM           |     0.115 |        1 |        10 |           10.00 |
 | I/O            |     0.002 |       21 |       285 |            7.37 |
 | Static Power   |     0.139 |          |           |                 |
-| Total          |     0.258 |          |           |                 |
+| Total          |     0.261 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.034 |       0.003 |      0.031 |
+| Vccint    |       1.000 |     0.036 |       0.005 |      0.031 |
 | Vccaux    |       1.800 |     0.094 |       0.064 |      0.031 |
 | Vcco33    |       3.300 |     0.005 |       0.000 |      0.005 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -91,17 +91,17 @@ Table of Contents
 1.3 Confidence Level
 --------------------
 
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-| User Input Data             | Confidence | Details                                               | Action                                                                                                     |
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-| Design implementation state | High       | Design is routed                                      |                                                                                                            |
-| Clock nodes activity        | High       | User specified more than 95% of clocks                |                                                                                                            |
-| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
-| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
-| Device models               | High       | Device models are Production                          |                                                                                                            |
-|                             |            |                                                       |                                                                                                            |
-| Overall confidence level    | Medium     |                                                       |                                                                                                            |
-+-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                               | Action                                                                                                             |
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                      |                                                                                                                    |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
+| Device models               | High       | Device models are Production                          |                                                                                                                    |
+|                             |            |                                                       |                                                                                                                    |
+| Overall confidence level    | Medium     |                                                       |                                                                                                                    |
++-----------------------------+------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
 
 2. Settings
@@ -141,13 +141,14 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-----------------+-----------+
-| Name            | Power (W) |
-+-----------------+-----------+
-| Pong            |     0.119 |
-|   datapath      |     0.117 |
-|     video       |     0.116 |
-|       clk_wiz_0 |     0.115 |
-+-----------------+-----------+
++------------------+-----------+
+| Name             | Power (W) |
++------------------+-----------+
+| Pong             |     0.122 |
+|   datapath       |     0.120 |
+|     ballFunction |     0.001 |
+|     video        |     0.116 |
+|       clk_wiz_0  |     0.115 |
++------------------+-----------+
 
 

@@ -5,11 +5,10 @@
 // 
 // Create Date: 07/15/2024 08:21:31 PM
 // Design Name: 
-// Module Name: Pong
-// Project Name: VGA 2 player Pong using NES controller and button input
+// Project Name: VGA Pong with NES Controllers
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: Top Module for the project
 // 
 // Dependencies: 
 // 
@@ -75,6 +74,9 @@ wire [1:0] sw_NESController_Left;
 
 wire [9:0] cw_NESController_Right;
 wire [1:0] sw_NESController_Right;
+
+wire [3:0] sw_ballMovement;
+wire [3:0] cw_ballMovement;
     
 datapath datapath(
     .clk(clk),
@@ -87,13 +89,18 @@ datapath datapath(
     .r(r),
     .g(g),
     .b(b),
+    
     .cw_NESController_Left(cw_NESController_Left),
     .sw_NESController_Left(sw_NESController_Left),
+    
     .cw_NESController_Right(cw_NESController_Right),
     .sw_NESController_Right(sw_NESController_Right),
     
     .NES_Controller_Left(NES_Controller_Left),
-    .NES_Controller_Right(NES_Controller_Right)
+    .NES_Controller_Right(NES_Controller_Right),
+    
+    .sw_ballMovement(sw_ballMovement),
+    .cw_ballMovement(cw_ballMovement)
 //    .ja0_data(ja0_data),
 //    .ja12_clk_latch(ja12_clk_latch)
     );
@@ -107,7 +114,10 @@ control_unit control_unit(
     .sw_NESController_Left(sw_NESController_Left),
     
     .cw_NESController_Right(cw_NESController_Right),
-    .sw_NESController_Right(sw_NESController_Right)
+    .sw_NESController_Right(sw_NESController_Right),
+    
+    .sw_ballMovement(sw_ballMovement),
+    .cw_ballMovement(cw_ballMovement)
     );
     
 endmodule

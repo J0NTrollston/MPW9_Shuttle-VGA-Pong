@@ -35,11 +35,11 @@ module control_unit(
     );
 
 //FSM states for the ball movement
-localparam [2:0]Reset = 5'd0,
-                UpRight = 5'd1,
-                UpLeft = 5'd2,
-                DownRight = 5'd3,
-                DownLeft = 5'd4;
+localparam [2:0]Reset = 3'd0,
+                UpRight = 3'd1,
+                UpLeft = 3'd2,
+                DownRight = 3'd3,
+                DownLeft = 3'd4;
 reg [2:0]state_ballMovement;
 
 
@@ -70,67 +70,66 @@ always @(posedge clk) begin
     if(reset_n == 1'b0)
         state_ballMovement <= UpLeft;
     else begin
-    
+        case(state_ballMovement)
+            Reset: begin
+                state_ballMovement <= UpLeft;
+            end
+            UpRight: begin
+                if(sw_ballMovement == 4'b0001) 
+                    state_ballMovement <= UpLeft;
+                else if(sw_ballMovement == 4'b0011)
+                    state_ballMovement <= DownRight;
+                else if(sw_ballMovement == 4'b0101)
+                    state_ballMovement <= Reset;
+                else
+                    state_ballMovement <= UpRight;            
+            end
+            UpLeft: begin
+                if(sw_ballMovement == 4'b0010)
+                    state_ballMovement <= UpRight;
+                else if(sw_ballMovement == 4'b0011)
+                    state_ballMovement <= DownLeft;
+                else if(sw_ballMovement == 4'b0101)
+                    state_ballMovement <= Reset;
+                else
+                    state_ballMovement <= UpLeft;
+            end
+            DownLeft: begin
+                if(sw_ballMovement == 4'b0010)
+                    state_ballMovement <= DownRight;
+                else if(sw_ballMovement == 4'b0100)
+                    state_ballMovement <= UpLeft;
+                else if(sw_ballMovement == 4'b0101)
+                    state_ballMovement <= Reset;
+                else
+                    state_ballMovement <= DownLeft;
+            end
+            DownRight: begin
+                if(sw_ballMovement == 4'b0001)
+                    state_ballMovement <= DownLeft;
+                else if(sw_ballMovement == 4'b0100)
+                    state_ballMovement <= UpRight;
+                else if(sw_ballMovement == 4'b0101)
+                    state_ballMovement <= Reset;
+                else
+                    state_ballMovement <= DownRight;
+            end
+        endcase
     end
-       
 end
-state_process_ballMovement: process(clk, reset_n)
-begin
-    if(rising_edge(clk)) then
-        if(reset_n = '0') then
-            state_ballMovement <= UpLeft;
-        else
-            case state_ballMovement is
-            
-                when Reset =>
-                     state_ballMovement <= UpLeft;
-                    
-                when UpRight =>
-                     if(sw_ballMovement = "0001") then 
-                        state_ballMovement <= UpLeft; 
-                     elsif(sw_ballMovement = "0011") then
-                        state_ballMovement <= DownRight;
-                     elsif(sw_ballMovement = "0101") then
-                        state_ballMovement <= Reset;
-                     else
-                        state_ballMovement <= UpRight;
-                    end if;
-                    
-                when UpLeft =>
-                     if(sw_ballMovement = "0010") then 
-                        state_ballMovement <= UpRight; 
-                     elsif(sw_ballMovement = "0011") then
-                        state_ballMovement <= DownLeft;
-                     elsif(sw_ballMovement = "0101") then
-                        state_ballMovement <= Reset;
-                     else
-                        state_ballMovement <= UpLeft;
-                    end if;    
-                    
-                when DownLeft =>
-                     if(sw_ballMovement = "0010") then 
-                        state_ballMovement <= DownRight; 
-                     elsif(sw_ballMovement = "0100") then
-                        state_ballMovement <= UpLeft;
-                     elsif(sw_ballMovement = "0101") then
-                        state_ballMovement <= Reset;
-                     else
-                        state_ballMovement <= DownLeft;
-                    end if;
-                    
-                when DownRight =>
-                     if(sw_ballMovement = "0001") then 
-                        state_ballMovement <= DownLeft; 
-                     elsif(sw_ballMovement = "0100") then
-                        state_ballMovement <= UpRight;
-                     elsif(sw_ballMovement = "0101") then
-                        state_ballMovement <= Reset;
-                     else
-                        state_ballMovement <= DownRight;
-                    end if;
-                                          
-            end case;
-        end if;
-    end if;
-end process;
+//-----------------------------------------------------------------------------------
+//    --		Control Word Table
+//    --      
+//    -- Data_read        
+//    -- 0001 - +x, +y        
+//    -- 0010 - -x, -y       
+//    -- 0100 - +x, -y       
+//    -- 1000 - -x, +y                     
+//    -----------------------------------------------------------------------------------
+assign cw_ballMovement = (state_ballMovement == UpRight) ? 4'b0100 :
+                         (state_ballMovement == UpLeft) ? 4'b0010 :
+                         (state_ballMovement == DownLeft) ? 4'b0011 :
+                         (state_ballMovement == Reset) ? 4'b0101 :
+                         4'b0001; //downright
+
 endmodule

@@ -35,6 +35,7 @@ set_property ip_output_repo c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shutt
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/NES_Controller_FSM.v
+  C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/ballFunction.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/control_unit.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/counter.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/datapath.v
@@ -43,7 +44,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/video.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/Pong.v
 }
-read_ip -quiet c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+read_ip -quiet C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]

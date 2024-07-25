@@ -45,7 +45,10 @@ module datapath(
 //    input wire ja0_data,
 //    output wire [1:0] ja12_clk_latch 
     inout wire [2:0] NES_Controller_Left,
-    inout wire [2:0] NES_Controller_Right 
+    inout wire [2:0] NES_Controller_Right,
+    
+    output wire [3:0] sw_ballMovement,
+    input wire [3:0] cw_ballMovement
     );
     
 
@@ -58,6 +61,11 @@ reg [9:0] leftPaddle;
 reg [7:0] NES_activity_Right, old_NES_Right;
 reg [7:0] NES_wire_Right;
 reg [9:0] rightPaddle;
+
+wire [9:0] ball_center_x, ball_center_y;
+reg [3:0] sw_ballMovement_reg;
+reg ballReset;
+wire ballClk;
 
 
 video video(
@@ -106,6 +114,19 @@ Counter #(.countLimit(1666666)) NES_delay_counter_right(
     .reset_n(reset_n),
     .ctrl(cw_NESController_Right[9:8]),
     .roll(sw_NESController_Right[1]));
+    
+Counter #(.countLimit(400000)) temp(
+    .clk(clk),
+    .reset_n(reset_n),
+    .ctrl(2'b01),
+    .roll(ballClk));
+    
+ballFunction ballFunction(
+    .clk(ballClk), //60hz
+    .reset_n(ballReset),
+    .cw_ballMovement(cw_ballMovement),
+    .ball_center_x(ball_center_x),
+    .ball_center_y(ball_center_y));
 
 
 always @(posedge clk) begin
@@ -147,23 +168,30 @@ end
     
 always @(posedge clk) begin
     NES_activity_Left <= (old_NES_Left ^ (~NES_wire_Left) ) & ~NES_wire_Left;
+    
     if(reset_n == 1'b0) begin
         old_NES_Left <= 8'd0;
         leftPaddle <= 10'd220;
+        ballReset <= 1'b1;
     end
 
     if(NES_activity_Left[6] == 1'b1) begin //reset
         leftPaddle <= 10'd220;
         NES_activity_Left <= 8'd0;
         old_NES_Left <= 8'd0;
+    end else if(NES_activity_Left[5] == 1'b1) begin
+        ballReset <= 1'b0;
+    end else if(NES_activity_Left[4] == 1'b1) begin
+        ballReset <= 1'b1;
     end else if(NES_activity_Left[3] == 1'b1) begin
-        if(leftPaddle - 4'd10 >= 45)
-            leftPaddle <= leftPaddle - 4'd10;
+        if(leftPaddle - 4'd5 >= 45)
+            leftPaddle <= leftPaddle - 4'd5;
     end else if(NES_activity_Left[2] == 1'b1) begin
-        if(leftPaddle + 4'd10 <= 395)
-            leftPaddle <= leftPaddle + 4'd10;
+        if(leftPaddle + 4'd5 <= 395)
+            leftPaddle <= leftPaddle + 4'd5;
     end
     
+//    ballReset <= 1'b0;
     old_NES_Left <= ~NES_wire_Left;
 end
 
@@ -179,15 +207,37 @@ always @(posedge clk) begin
         NES_activity_Right <= 8'd0;
         old_NES_Right <= 8'd0;
     end else if(NES_activity_Right[3] == 1'b1) begin
-        if(rightPaddle - 4'd10 >= 45)
-            rightPaddle <= rightPaddle - 4'd10;
+        if(rightPaddle - 4'd5 >= 45)
+            rightPaddle <= rightPaddle - 4'd5;
     end else if(NES_activity_Right[2] == 1'b1) begin
-        if(rightPaddle + 4'd10 <= 395)
-            rightPaddle <= rightPaddle + 4'd10;
+        if(rightPaddle + 4'd5 <= 395)
+            rightPaddle <= rightPaddle + 4'd5;
     end
     
     old_NES_Right <= ~NES_wire_Right;
 end
+
+always @(posedge ballClk) begin
+    if(ball_center_y <= 25)
+        sw_ballMovement_reg <= 4'b0011;
+    else if(ball_center_y == 416)
+        sw_ballMovement_reg <= 4'b0100;
+    else if(ball_center_x == 593 && (ball_center_y > rightPaddle - 30 && ball_center_y < rightPaddle + 30))
+        sw_ballMovement_reg <= 4'b0001;
+    else if(ball_center_x == 47 && (ball_center_y > leftPaddle - 30 && ball_center_y < leftPaddle + 30))
+        sw_ballMovement_reg <= 4'b0010;
+    else if(ball_center_x >= 616 || ball_center_x <= 24) begin
+        sw_ballMovement_reg <= 4'b0101;
+//        ballReset <= 1'b1;
+    end else
+        sw_ballMovement_reg <= 4'b0000;
+end
+//pRight) ? 4'b0100 :
+//                         (state_ballMovement == UpLeft) ? 4'b0010 :
+//                         (state_ballMovement == DownLeft) ? 4'b0011 :
+//                         (state_ballMovement == Reset) ? 4'b0101 :
+//                         4'b0001; //downright
+
 
 
 
@@ -199,7 +249,7 @@ assign NES_Controller_Left[2] = cw_NESController_Left[3];
 assign NES_Controller_Right[1] = cw_NESController_Right[2];
 assign NES_Controller_Right[2] = cw_NESController_Right[3];
    
+assign sw_ballMovement = sw_ballMovement_reg;
   
     
-//assign led = ~NES_wire;
 endmodule

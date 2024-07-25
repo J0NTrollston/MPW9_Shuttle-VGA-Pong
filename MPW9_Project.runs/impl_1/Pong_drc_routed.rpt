@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Mon Jul 22 16:22:51 2024
+| Date         : Wed Jul 24 19:28:25 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_drc -file Pong_drc_routed.rpt -pb Pong_drc_routed.pb -rpx Pong_drc_routed.rpx
 | Design       : Pong
@@ -24,15 +24,28 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 6
-+--------+----------+---------------------------------+------------+
-| Rule   | Severity | Description                     | Violations |
-+--------+----------+---------------------------------+------------+
-| RPBF-3 | Warning  | IO port buffering is incomplete | 6          |
-+--------+----------+---------------------------------+------------+
+             Violations found: 8
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PDRC-153    | Warning  | Gated clock check                                           | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| RPBF-3      | Warning  | IO port buffering is incomplete                             | 6          |
++-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net datapath/temp/CLK is a gated clock net sourced by a combinational pin datapath/temp/sw_ballMovement_reg[2]_i_2/O, cell datapath/temp/sw_ballMovement_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT datapath/temp/sw_ballMovement_reg[2]_i_2 is driving clock pin of 23 cells. This could lead to large hold time violations. Involved cells are:
+datapath/ballFunction/ball_center_x_proc_reg[0], datapath/ballFunction/ball_center_x_proc_reg[1], datapath/ballFunction/ball_center_x_proc_reg[2], datapath/ballFunction/ball_center_x_proc_reg[3], datapath/ballFunction/ball_center_x_proc_reg[4], datapath/ballFunction/ball_center_x_proc_reg[5], datapath/ballFunction/ball_center_x_proc_reg[6], datapath/ballFunction/ball_center_x_proc_reg[7], datapath/ballFunction/ball_center_x_proc_reg[8], datapath/ballFunction/ball_center_x_proc_reg[9], datapath/ballFunction/ball_center_y_proc_reg[0], datapath/ballFunction/ball_center_y_proc_reg[1], datapath/ballFunction/ball_center_y_proc_reg[2], datapath/ballFunction/ball_center_y_proc_reg[3], datapath/ballFunction/ball_center_y_proc_reg[4] (the first 15 of 23 listed)
+Related violations: <none>
+
 RPBF-3#1 Warning
 IO port buffering is incomplete  
 Device port NES_Controller_Left[0] expects both input and output buffering but the buffers are incomplete.
