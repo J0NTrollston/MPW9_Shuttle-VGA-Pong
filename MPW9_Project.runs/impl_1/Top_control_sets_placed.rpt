@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Jul 26 17:44:46 2024
+| Date         : Fri Jul 26 18:50:09 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    14 |
+|    Minimum number of control sets                        |    14 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |    67 |
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
+| Total control sets |    14 |
 | >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     1 |
+| >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     5 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     6 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,34 +58,35 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              20 |            5 |
+| No           | No                    | No                     |              11 |            5 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              11 |            4 |
+| No           | Yes                   | No                     |              20 |           10 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             142 |           49 |
+| Yes          | Yes                   | No                     |             142 |           51 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
-|       Clock Signal       |                                    Enable Signal                                    |                                 Set/Reset Signal                                 | Slice Load Count | Bel Load Count |
-+--------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
-|  Pong/datapath/temp/CLK  |                                                                                     |                                                                                  |                1 |              3 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_counter_left/processQ0                                            | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0] |                2 |              8 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/video/vga/Column_Counter/processQ0                                    | Pong/datapath/video/vga/Column_Counter/SR[0]                                     |                4 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/video/vga/Column_Counter/E[0]                                         | Pong/datapath/video/vga/Row_Counter/processQ[9]_i_1_n_0                          |                5 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/leftPaddle[9]_i_2_n_0                                                 | Pong/datapath/leftPaddle[9]_i_1_n_0                                              |                6 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/rightPaddle[9]_i_1_n_0                                                | Pong/datapath/NES_activity_Right_reg_n_0_[3]                                     |                5 |             10 |
-|  clk_wiz_0/inst/clk_out1 |                                                                                     | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                4 |             11 |
-|  clk_wiz_0/inst/clk_out1 |                                                                                     |                                                                                  |                4 |             17 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/temp/processQ0                                                        | Pong/datapath/temp/processQ[0]_i_1__2_n_0                                        |                5 |             17 |
-|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_2__0_n_0 | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                5 |             19 |
-|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController[18]_i_1_n_0   | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                4 |             19 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_delay_counter_left/processQ0                                      | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_1    |                5 |             19 |
-|  Pong/datapath/temp/CLK  | Pong/control_unit/E[0]                                                              | Pong/control_unit/SR[0]                                                          |                8 |             20 |
-+--------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
++--------------------------+--------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
+|       Clock Signal       |                                     Enable Signal                                    |                                 Set/Reset Signal                                 | Slice Load Count | Bel Load Count |
++--------------------------+--------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
+|  Pong/datapath/temp/CLK  |                                                                                      |                                                                                  |                2 |              3 |
+|  clk_wiz_0/inst/clk_out1 |                                                                                      |                                                                                  |                3 |              8 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_counter_left/processQ0                                             | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0] |                3 |              8 |
+|  clk_wiz_0/inst/clk_out1 |                                                                                      | Pong/datapath/NES_activity_Right[3]_i_1_n_0                                      |                4 |              9 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/leftPaddle[9]_i_1_n_0                                                  | Pong/datapath/NES_activity_Right[3]_i_1_n_0                                      |                7 |             10 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/rightPaddle0                                                           | Pong/datapath/NES_activity_Right[3]_i_1_n_0                                      |                6 |             10 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/vga/Column_Counter/processQ0                                           | Pong/datapath/vga/Column_Counter/processQ[9]_i_1_n_0                             |                3 |             10 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/vga/Row_Counter/processQ0                                              | Pong/datapath/vga/Row_Counter/processQ[9]_i_1__0_n_0                             |                5 |             10 |
+|  clk_wiz_0/inst/clk_out1 |                                                                                      | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                6 |             11 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/temp/processQ0                                                         | Pong/datapath/temp/processQ[0]_i_1__2_n_0                                        |                5 |             17 |
+|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_2__0_n_0  | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                4 |             19 |
+|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController[18]_i_1__0_n_0 | Pong/control_unit/NES_Controller_Left/SS[0]                                      |                5 |             19 |
+|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_delay_counter_left/processQ0                                       | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_1    |                5 |             19 |
+|  Pong/datapath/temp/CLK  | Pong/control_unit/E[0]                                                               | Pong/control_unit/SR[0]                                                          |                8 |             20 |
++--------------------------+--------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------+----------------+
 
 

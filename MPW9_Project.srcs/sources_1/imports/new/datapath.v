@@ -66,7 +66,7 @@ wire ballClk; //temp
 wire NES_delay_counter_roll;
 wire NES_counter_roll;
 
-video video(
+vga vga(
     .clk(clk),
     .reset_n(reset_n),
 
@@ -93,7 +93,7 @@ Counter #(.countLimit(152)) NES_counter_left(
     .reset_n(reset_n),
     
     .ctrl(cw_NESController_Left[1:0]),
-    .roll(sw_NESController_Left[0])
+    .roll(NES_counter_roll)
     );
 
 
@@ -192,15 +192,15 @@ always @(posedge clk) begin
         rightPaddle <= 10'd220;
     end
 
-    if((NES_activity_Left[3] == 1'b1)) begin //Select
+    if((NES_activity_Left[3] == 1'b1) || (NES_activity_Right[3] == 1'b1)) begin //Select
         ballReset <= 1'b0;
         leftPaddle <= 10'd220;
         rightPaddle <= 10'd220;
         NES_activity_Left <= 8'd0;
-//        NES_activity_Right <= 8'd0;
-//        old_NES_Right <= 8'd0;
+        NES_activity_Right <= 8'd0;
+        old_NES_Right <= 8'd0;
         old_NES_Left <= 8'd0;
-    end else if((NES_activity_Left[2] == 1'b1) ) begin //Start
+    end else if((NES_activity_Left[2] == 1'b1) || (NES_activity_Right[2] == 1'b1)) begin //Start
         ballReset <= 1'b1;
     end else if(NES_activity_Left[1] == 1'b1) begin //Up
         if(leftPaddle - 4'd5 >= 45)
@@ -210,16 +210,16 @@ always @(posedge clk) begin
             leftPaddle <= leftPaddle + 4'd5;
     end
     
-    if(NES_activity_Right[3] == 1'b1) begin //Select
-        ballReset <= 1'b0;
-        rightPaddle <= 10'd220;
-        leftPaddle <= 10'd220;
-        NES_activity_Right <= 8'd0;
-        old_NES_Right <= 8'd0;
-    end else if(NES_activity_Right[2] == 1'b1) begin //Start
-        ballReset <= 1'b1;
-    end else 
-    if(NES_activity_Right[1] == 1'b1) begin //Up
+//    if(NES_activity_Right[3] == 1'b1) begin //Select
+//        ballReset <= 1'b0;
+//        rightPaddle <= 10'd220;
+//        leftPaddle <= 10'd220;
+//        NES_activity_Right <= 8'd0;
+//        old_NES_Right <= 8'd0;
+//    end else if(NES_activity_Right[2] == 1'b1) begin //Start
+//        ballReset <= 1'b1;
+//    end  
+    else if(NES_activity_Right[1] == 1'b1) begin //Up
         if(rightPaddle - 4'd5 >= 45)
             rightPaddle <= rightPaddle - 4'd5;
     end else if(NES_activity_Right[0] == 1'b1) begin //Down

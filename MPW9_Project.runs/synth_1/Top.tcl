@@ -42,7 +42,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/datapath.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/display.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/vga.v
-  C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/video.v
   C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/Top.v
 }
 read_ip -quiet C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
