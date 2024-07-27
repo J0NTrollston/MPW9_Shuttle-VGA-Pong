@@ -48,12 +48,12 @@ module datapath(
     );
     
 // Left controller registers
-reg [4:0] NES_activity_Left, old_NES_Left;
+reg [3:0] NES_activity_Left, old_NES_Left;
 reg [3:0] NES_wire_Left;
 reg [9:0] leftPaddle;
 
 // Right controller registers
-reg [4:0] NES_activity_Right, old_NES_Right;
+reg [3:0] NES_activity_Right, old_NES_Right;
 reg [3:0] NES_wire_Right;
 reg [9:0] rightPaddle;
 
@@ -61,7 +61,8 @@ reg [9:0] rightPaddle;
 wire [9:0] ball_center_x, ball_center_y;
 reg [3:0] sw_ballMovement_reg;
 reg ballReset;
-wire ballClk; //temp
+wire [16:0] ballClk_Q;
+wire ballClk; 
 
 wire NES_delay_counter_roll;
 wire NES_counter_roll;
@@ -113,8 +114,10 @@ Counter #(.countLimit(419583)) NES_delay_counter_left(
     .reset_n(reset_n),
     
     .ctrl(cw_NESController_Left[9:8]),
-    .roll(NES_delay_counter_roll)
+    .roll(NES_delay_counter_roll),
+    .Q(ballClk_Q)
     );
+
 
 ////Polls the right NES controler button presses 60Hz  
 //Counter #(.countLimit(419583)) NES_delay_counter_right(
@@ -125,14 +128,14 @@ Counter #(.countLimit(419583)) NES_delay_counter_left(
 //    .roll(sw_NESController_Right[1])
 //    );
 
-// Controls how fast the ball moves
-Counter #(.countLimit(100000)) temp(
-    .clk(clk),
-    .reset_n(reset_n),
+//// Controls how fast the ball moves
+//Counter #(.countLimit(100000)) temp(
+//    .clk(clk),
+//    .reset_n(reset_n),
     
-    .ctrl(2'b01), // always on
-    .roll(ballClk)
-    );
+//    .ctrl(2'b01), // always on
+//    .roll(ballClk)
+//    );
 
 //Controls the position of the ball based on the control word
 ballFunction ballFunction(
@@ -147,8 +150,8 @@ ballFunction ballFunction(
 //saves the current state of each button press on each poll of the controller
 always @(posedge clk) begin
     if(reset_n == 1'b0) begin
-        NES_wire_Left <= 4'b0;
-        NES_wire_Right <= 4'b0;
+        NES_wire_Left <= 4'd0;
+        NES_wire_Right <= 4'd0;
     end else begin
     
         //Left controller input
@@ -185,22 +188,22 @@ always @(posedge clk) begin
     
     if(reset_n == 1'b0) begin
         old_NES_Left <= 8'd0;
-        leftPaddle <= 10'd220;
+        leftPaddle <= 8'd220;
         ballReset <= 1'b0;
         
         old_NES_Right <= 8'd0;
-        rightPaddle <= 10'd220;
+        rightPaddle <= 8'd220;
     end
 
-    if((NES_activity_Left[3] == 1'b1) || (NES_activity_Right[3] == 1'b1)) begin //Select
+    if((NES_activity_Left[3] == 1'b1)) begin //Select
         ballReset <= 1'b0;
-        leftPaddle <= 10'd220;
-        rightPaddle <= 10'd220;
+        leftPaddle <= 8'd220;
+        rightPaddle <= 8'd220;
         NES_activity_Left <= 8'd0;
-        NES_activity_Right <= 8'd0;
-        old_NES_Right <= 8'd0;
+//        NES_activity_Right <= 8'd0;
+//        old_NES_Right <= 8'd0;
         old_NES_Left <= 8'd0;
-    end else if((NES_activity_Left[2] == 1'b1) || (NES_activity_Right[2] == 1'b1)) begin //Start
+    end else if((NES_activity_Left[2] == 1'b1) ) begin //Start
         ballReset <= 1'b1;
     end else if(NES_activity_Left[1] == 1'b1) begin //Up
         if(leftPaddle - 4'd5 >= 45)
@@ -210,16 +213,16 @@ always @(posedge clk) begin
             leftPaddle <= leftPaddle + 4'd5;
     end
     
-//    if(NES_activity_Right[3] == 1'b1) begin //Select
-//        ballReset <= 1'b0;
-//        rightPaddle <= 10'd220;
-//        leftPaddle <= 10'd220;
-//        NES_activity_Right <= 8'd0;
-//        old_NES_Right <= 8'd0;
-//    end else if(NES_activity_Right[2] == 1'b1) begin //Start
-//        ballReset <= 1'b1;
-//    end  
-    else if(NES_activity_Right[1] == 1'b1) begin //Up
+    if(NES_activity_Right[3] == 1'b1) begin //Select
+        ballReset <= 1'b0;
+        rightPaddle <= 8'd220;
+        leftPaddle <= 8'd220;
+        NES_activity_Right <= 8'd0;
+        old_NES_Right <= 8'd0;
+    end else if(NES_activity_Right[2] == 1'b1) begin //Start
+        ballReset <= 1'b1;
+    end else 
+    if(NES_activity_Right[1] == 1'b1) begin //Up
         if(rightPaddle - 4'd5 >= 45)
             rightPaddle <= rightPaddle - 4'd5;
     end else if(NES_activity_Right[0] == 1'b1) begin //Down
@@ -265,5 +268,8 @@ assign sw_NESController_Right[1] = NES_delay_counter_roll;
 
 assign sw_NESController_Left[0] = NES_counter_roll;
 assign sw_NESController_Right[0] = NES_counter_roll;
+
+assign ballClk = ((ballClk_Q == 104895) || (ballClk_Q == 209790) || (ballClk_Q == 314685) || (ballClk_Q == 419580)) ? 1'b1 : 1'b0;
+
 
 endmodule
