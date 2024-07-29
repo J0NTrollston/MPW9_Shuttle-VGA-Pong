@@ -63,9 +63,9 @@ module Pong(
     //NES Controller input for left/right
 //    inout wire [2:0] NES_Controller_Left,
 //    inout wire [2:0] NES_Controller_Right
-//    input wire [7:0] in,
-    output wire [4:0] out,
-    inout wire [5:0] bidir
+    input wire [7:0] in,
+    output wire [7:0] out,
+    inout wire [7:0] bidir
     );
     
 //Interconnecting wires between modules
@@ -79,7 +79,6 @@ wire [3:0] sw_ballMovement;
 wire [3:0] cw_ballMovement;
 
 wire [2:0] NES_Controller_Left, NES_Controller_Right;
-wire data_left, data_right;
 wire h_sync, v_sync, r, g, b;
     
 datapath datapath(
@@ -127,17 +126,8 @@ control_unit control_unit(
     .sw_ballMovement(sw_ballMovement),
     .cw_ballMovement(cw_ballMovement)
     ); 
-
-   
-assign out = ({b, g, r, v_sync, h_sync});
-// assign bidir = ({2'b00, NES_Controller_Right[2], NES_Controller_Right[1], NES_Controller_Right[0], NES_Controller_Left[2], NES_Controller_Left[1], NES_Controller_Left[0]});
-
-assign NES_Controller_Left[0] = bidir[0];
-assign bidir[1] = NES_Controller_Left[1];
-assign bidir[2] = NES_Controller_Left[2];
-assign NES_Controller_Right[0] = bidir[3];
-assign bidir[4] = NES_Controller_Right[1];
-assign bidir[5] = NES_Controller_Right[2];
-//assign bidir[7:6] = 2'b00;
+    
+assign out = {h_sync, v_sync, r, g, b, 3'b000};
+assign bidir = {NES_Controller_Left[0], NES_Controller_Left[1], NES_Controller_Left[2], NES_Controller_Right[0], NES_Controller_Right[1], NES_Controller_Right[2], 2'b00};
 
 endmodule

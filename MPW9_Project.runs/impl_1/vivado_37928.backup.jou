@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Wed Jul 24 17:19:06 2024
+# Process ID: 37928
+# Current directory: C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/impl_1
+# Command line: vivado.exe -log Pong.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Pong.tcl -notrace
+# Log file: C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/impl_1/Pong.vdi
+# Journal file: C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source Pong.tcl -notrace

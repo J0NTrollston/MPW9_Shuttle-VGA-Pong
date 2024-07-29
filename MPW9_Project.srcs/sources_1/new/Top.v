@@ -24,9 +24,9 @@ module Top(
     input wire clk,
     input wire reset_n, //A7 FPGA uses active low reset signal
     
-//    input wire [7:0] in,
-    output wire [4:0] out,
-    inout wire [5:0] bidir
+    input wire [7:0] in,
+    output wire [7:0] out,
+    inout wire [7:0] bidir
     );
     
 wire reset = ~reset_n;
@@ -36,7 +36,7 @@ Pong Pong(
     .clk(pixel_clk),
     .reset_n(reset_n), //A7 FPGA uses active low reset signal
     
-//    .in(in),
+    .in(in),
     .out(out),
     .bidir(bidir)
     );
