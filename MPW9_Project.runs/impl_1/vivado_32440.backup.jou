@@ -3,8 +3,13 @@
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
 <<<<<<< HEAD:MPW9_Project.runs/impl_1/vivado_32440.backup.jou
+<<<<<<< HEAD:MPW9_Project.runs/impl_1/vivado_32440.backup.jou
 # Start of session at: Fri Jul 26 18:40:45 2024
 # Process ID: 32440
+=======
+# Start of session at: Thu Jul 25 14:59:12 2024
+# Process ID: 58156
+>>>>>>> parent of 1356748 (reducing to minimize die area without removing functionality):MPW9_Project.runs/impl_1/vivado.jou
 =======
 # Start of session at: Thu Jul 25 14:59:12 2024
 # Process ID: 58156
