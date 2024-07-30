@@ -131,6 +131,7 @@ always @(posedge clk) begin
                 if(sw_NESController[0] == 1'b1)
                     state_NESController <= Reset;
             end
+            default: state_NESController <= Reset;
         endcase
     end
 end

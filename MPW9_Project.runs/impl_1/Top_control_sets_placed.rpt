@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Mon Jul 29 20:11:06 2024
+| Date         : Mon Jul 29 21:26:38 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -60,35 +60,35 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               4 |            3 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              28 |            9 |
+| No           | Yes                   | No                     |              28 |            8 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             177 |           60 |
+| Yes          | Yes                   | No                     |             177 |           59 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
-|       Clock Signal       |                                   Enable Signal                                   |                                  Set/Reset Signal                                 | Slice Load Count | Bel Load Count |
-+--------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
-|  clk_wiz_0/inst/clk_out1 |                                                                                   |                                                                                   |                3 |              4 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/ballFunction/E[0]                                                   | Pong/datapath/ballFunction/scoreRightProc_reg[3][0]                               |                1 |              4 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/ballFunction/NES_activity_Left_reg[5][0]                            | Pong/datapath/ballFunction/scoreRightProc_reg[3][0]                               |                2 |              4 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_counter_left/processQ[7]_i_2_n_0                                | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0]  |                3 |              8 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_counter_right/processQ[7]_i_2__0_n_0                            | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController_reg[0]_0[0] |                3 |              8 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/vga/Column_Counter/processQ0                                        | Pong/datapath/vga/Column_Counter/processQ[9]_i_1_n_0                              |                5 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/vga/Row_Counter/processQ0                                           | Pong/datapath/vga/Row_Counter/processQ[9]_i_1__0_n_0                              |                3 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/leftPaddle[9]_i_2_n_0                                               | Pong/datapath/ballFunction/SR[0]                                                  |                3 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/rightPaddle[9]_i_1_n_0                                              | Pong/datapath/ballFunction/SR[0]                                                  |                7 |             10 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/temp/processQ0                                                      | Pong/datapath/temp/processQ[0]_i_1__5_n_0                                         |                5 |             17 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_delay_counter_left/processQ0                                    | Pong/datapath/NES_delay_counter_left/processQ[0]_i_1__3_n_0                       |                5 |             19 |
-|  clk_wiz_0/inst/clk_out1 | Pong/datapath/NES_delay_counter_right/processQ0                                   | Pong/datapath/NES_delay_counter_right/processQ[0]_i_1__4_n_0                      |                5 |             19 |
-|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_2_n_0  | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                5 |             19 |
-|  clk_wiz_0/inst/clk_out1 | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController[18]_i_1_n_0 | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                5 |             19 |
-|  Pong/datapath/temp/CLK  | Pong/control_unit/E[0]                                                            | Pong/control_unit/FSM_sequential_state_ballMovement_reg[2]_0[0]                   |                8 |             20 |
-|  clk_wiz_0/inst/clk_out1 |                                                                                   | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                9 |             28 |
-+--------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
++-------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
+|          Clock Signal         |                                   Enable Signal                                   |                                  Set/Reset Signal                                 | Slice Load Count | Bel Load Count |
++-------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
+|  clk_wiz_0/inst/clk_out1      |                                                                                   |                                                                                   |                3 |              4 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/ballFunction/E[0]                                                   | Pong/datapath/ballFunction/scoreRightProc_reg[3][0]                               |                1 |              4 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/ballFunction/NES_activity_Left_reg[5][0]                            | Pong/datapath/ballFunction/scoreRightProc_reg[3][0]                               |                1 |              4 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/NES_counter_left/processQ[7]_i_2_n_0                                | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController_reg[0]_0[0]  |                3 |              8 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/NES_counter_right/processQ[7]_i_2__0_n_0                            | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController_reg[0]_0[0] |                3 |              8 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/vga/Row_Counter/processQ0                                           | Pong/datapath/vga/Row_Counter/processQ[9]_i_1__0_n_0                              |                4 |             10 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/vga/Column_Counter/processQ0                                        | Pong/datapath/vga/Column_Counter/processQ[9]_i_1_n_0                              |                5 |             10 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/leftPaddle[9]_i_2_n_0                                               | Pong/datapath/ballFunction/SR[0]                                                  |                3 |             10 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/rightPaddle[9]_i_1_n_0                                              | Pong/datapath/ballFunction/SR[0]                                                  |                7 |             10 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/Ball_Clock/processQ0                                                | Pong/datapath/Ball_Clock/processQ[0]_i_1__5_n_0                                   |                5 |             17 |
+|  clk_wiz_0/inst/clk_out1      | Pong/control_unit/NES_Controller_Left/FSM_onehot_state_NESController[18]_i_2_n_0  | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                5 |             19 |
+|  clk_wiz_0/inst/clk_out1      | Pong/control_unit/NES_Controller_Right/FSM_onehot_state_NESController[18]_i_1_n_0 | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                4 |             19 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/NES_delay_counter_left/processQ0                                    | Pong/datapath/NES_delay_counter_left/processQ[0]_i_1__3_n_0                       |                5 |             19 |
+|  clk_wiz_0/inst/clk_out1      | Pong/datapath/NES_delay_counter_right/processQ0                                   | Pong/datapath/NES_delay_counter_right/processQ[0]_i_1__4_n_0                      |                5 |             19 |
+|  Pong/datapath/Ball_Clock/CLK | Pong/control_unit/E[0]                                                            | Pong/control_unit/FSM_sequential_state_ballMovement_reg[1]_0[0]                   |                8 |             20 |
+|  clk_wiz_0/inst/clk_out1      |                                                                                   | Pong/control_unit/NES_Controller_Right/SS[0]                                      |                8 |             28 |
++-------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------+----------------+
 
 
