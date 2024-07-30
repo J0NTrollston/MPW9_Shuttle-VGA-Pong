@@ -15,9 +15,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Device 21-403] Loading part xc7a200tsbg484-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7088 
+INFO: Helper process launched with PID 47092 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:04 . Memory (MB): peak = 763.461 ; gain = 178.324
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 763.469 ; gain = 178.426
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/Top.v:22]
 INFO: [Synth 8-6157] synthesizing module 'Pong' [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/Pong.v:40]
@@ -84,12 +84,12 @@ INFO: [Synth 8-6157] synthesizing module 'NES_Controller_FSM' [C:/Users/wrwrb/On
 INFO: [Synth 8-6155] done synthesizing module 'NES_Controller_FSM' (6#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/NES_Controller_FSM.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'control_unit' (7#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/control_unit.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'Pong' (8#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/imports/new/Pong.v:40]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/.Xil/Vivado-39392-Brandons-XPS-15/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (9#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/.Xil/Vivado-39392-Brandons-XPS-15/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/.Xil/Vivado-43724-Brandons-XPS-15/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (9#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/.Xil/Vivado-43724-Brandons-XPS-15/realtime/clk_wiz_0_stub.v:5]
 WARNING: [Synth 8-7023] instance 'clk_wiz_0' of module 'clk_wiz_0' has 4 connections declared, but only 3 given [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/Top.v:45]
 INFO: [Synth 8-6155] done synthesizing module 'Top' (10#1) [C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/new/Top.v:22]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 828.957 ; gain = 243.820
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 828.305 ; gain = 243.262
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -102,10 +102,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 828.957 ; gain = 243.820
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 828.305 ; gain = 243.262
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 828.957 ; gain = 243.820
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 828.305 ; gain = 243.262
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -119,20 +119,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 968.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 965.211 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 968.617 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 965.211 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tsbg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -141,12 +141,11 @@ Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/w
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property DONT_TOUCH = true for clk_wiz_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "NES_wire_Left" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "NES_wire_Right" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'state_NESController_reg' in module 'NES_Controller_FSM'
-INFO: [Synth 8-5587] ROM size for "state_NESController" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-802] inferred FSM for state register 'state_ballMovement_reg' in module 'control_unit'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -183,7 +182,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_NESController_reg' u
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_ballMovement_reg' using encoding 'sequential' in module 'control_unit'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -222,8 +221,8 @@ Detailed RTL Component Info :
 	   2 Input      3 Bit        Muxes := 6     
 	   5 Input      3 Bit        Muxes := 2     
 	   3 Input      3 Bit        Muxes := 3     
-	   2 Input      1 Bit        Muxes := 38    
-	   5 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 45    
+	   5 Input      1 Bit        Muxes := 2     
 	   7 Input      1 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 2     
 	  19 Input      1 Bit        Muxes := 2     
@@ -241,7 +240,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               10 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 Module Counter__parameterized0 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -249,7 +248,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               10 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 Module display 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -262,15 +261,15 @@ Detailed RTL Component Info :
 +---Registers : 
 	                8 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
 Module Counter__parameterized2 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 Module Counter__parameterized3 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 Module ballFunction 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -324,6 +323,7 @@ Detailed RTL Component Info :
 	   3 Input      3 Bit        Muxes := 3     
 	   2 Input      3 Bit        Muxes := 3     
 	   4 Input      3 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -343,7 +343,7 @@ Warning: Parallel synthesis criteria is not met
 INFO: [Synth 8-5544] ROM "Pong/datapath/ballFunction/" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Pong/datapath/sw_ballMovement_reg_reg[3] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:21 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -357,13 +357,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_wiz_0/clk_out1' to pin 'clk_wiz_0/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:31 . Memory (MB): peak = 968.617 ; gain = 383.480
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:25 . Memory (MB): peak = 965.211 ; gain = 380.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:03 ; elapsed = 00:00:35 . Memory (MB): peak = 995.672 ; gain = 410.535
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:28 . Memory (MB): peak = 993.148 ; gain = 408.105
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -375,7 +375,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:03 ; elapsed = 00:00:35 . Memory (MB): peak = 995.863 ; gain = 410.727
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:28 . Memory (MB): peak = 994.184 ; gain = 409.141
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -399,7 +399,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:04 ; elapsed = 00:00:37 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -412,7 +412,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:04 ; elapsed = 00:00:37 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -424,25 +424,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:04 ; elapsed = 00:00:37 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:04 ; elapsed = 00:00:37 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:38 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:04 ; elapsed = 00:00:38 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -462,12 +462,12 @@ Report Cell Usage:
 |1     |clk_wiz_0 |     1|
 |2     |BUF       |     2|
 |3     |CARRY4    |    84|
-|4     |LUT1      |    21|
-|5     |LUT2      |    92|
-|6     |LUT3      |    77|
-|7     |LUT4      |   112|
-|8     |LUT5      |   108|
-|9     |LUT6      |   287|
+|4     |LUT1      |    20|
+|5     |LUT2      |    91|
+|6     |LUT3      |    74|
+|7     |LUT4      |   117|
+|8     |LUT5      |   115|
+|9     |LUT6      |   282|
 |10    |FDRE      |   189|
 |11    |FDSE      |    20|
 |12    |IBUF      |     3|
@@ -478,46 +478,46 @@ Report Instance Areas:
 +------+------------------------------+--------------------------+------+
 |      |Instance                      |Module                    |Cells |
 +------+------------------------------+--------------------------+------+
-|1     |top                           |                          |  1006|
-|2     |  Pong                        |Pong                      |   990|
-|3     |    control_unit              |control_unit              |    86|
-|4     |      NES_Controller_Left     |NES_Controller_FSM        |    34|
+|1     |top                           |                          |  1008|
+|2     |  Pong                        |Pong                      |   992|
+|3     |    control_unit              |control_unit              |    84|
+|4     |      NES_Controller_Left     |NES_Controller_FSM        |    33|
 |5     |      NES_Controller_Right    |NES_Controller_FSM_2      |    36|
-|6     |    datapath                  |datapath                  |   904|
+|6     |    datapath                  |datapath                  |   908|
 |7     |      Ball_Clock              |Counter__parameterized3   |    32|
-|8     |      NES_counter_left        |Counter__parameterized1   |    21|
-|9     |      NES_counter_right       |Counter__parameterized1_0 |    21|
+|8     |      NES_counter_left        |Counter__parameterized1   |    22|
+|9     |      NES_counter_right       |Counter__parameterized1_0 |    22|
 |10    |      NES_delay_counter_left  |Counter__parameterized2   |    34|
 |11    |      NES_delay_counter_right |Counter__parameterized2_1 |    34|
-|12    |      ballFunction            |ballFunction              |   289|
-|13    |      vga                     |vga                       |   283|
-|14    |        Column_Counter        |Counter                   |    90|
-|15    |        Row_Counter           |Counter__parameterized0   |   108|
+|12    |      ballFunction            |ballFunction              |   275|
+|13    |      vga                     |vga                       |   292|
+|14    |        Column_Counter        |Counter                   |    92|
+|15    |        Row_Counter           |Counter__parameterized0   |   115|
 |16    |        display               |display                   |    85|
 +------+------------------------------+--------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:04 ; elapsed = 00:00:38 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:04 ; elapsed = 00:00:34 . Memory (MB): peak = 1001.613 ; gain = 276.816
-Synthesis Optimization Complete : Time (s): cpu = 00:00:04 ; elapsed = 00:00:38 . Memory (MB): peak = 1001.613 ; gain = 416.477
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:28 . Memory (MB): peak = 995.973 ; gain = 274.023
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 995.973 ; gain = 410.930
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 86 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1001.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1012.051 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   BUF => LUT1: 2 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-51 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
+50 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:46 . Memory (MB): peak = 1001.613 ; gain = 710.266
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1001.613 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:37 . Memory (MB): peak = 1012.051 ; gain = 720.137
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1012.051 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/wrwrb/OneDrive/Desktop/Repo/MPW9/MPW9_Shuttle-VGA-Pong/MPW9_Project.runs/synth_1/Top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jul 29 21:25:51 2024...
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 30 00:28:01 2024...

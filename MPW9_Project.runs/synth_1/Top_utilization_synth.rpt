@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Mon Jul 29 21:25:51 2024
+| Date         : Tue Jul 30 00:28:01 2024
 | Host         : Brandons-XPS-15 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
 | Design       : Top
@@ -30,8 +30,8 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  580 |     0 |    134600 |  0.43 |
-|   LUT as Logic          |  580 |     0 |    134600 |  0.43 |
+| Slice LUTs*             |  577 |     0 |    134600 |  0.43 |
+|   LUT as Logic          |  577 |     0 |    134600 |  0.43 |
 |   LUT as Memory         |    0 |     0 |     46200 |  0.00 |
 | Slice Registers         |  209 |     0 |    269200 |  0.08 |
 |   Register as Flip Flop |  209 |     0 |    269200 |  0.08 |
@@ -149,14 +149,14 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  287 |                 LUT |
+| LUT6     |  282 |                 LUT |
 | FDRE     |  189 |        Flop & Latch |
-| LUT4     |  112 |                 LUT |
-| LUT5     |  108 |                 LUT |
-| LUT2     |   92 |                 LUT |
+| LUT4     |  117 |                 LUT |
+| LUT5     |  115 |                 LUT |
+| LUT2     |   91 |                 LUT |
 | CARRY4   |   84 |          CarryLogic |
-| LUT3     |   77 |                 LUT |
-| LUT1     |   23 |                 LUT |
+| LUT3     |   74 |                 LUT |
+| LUT1     |   22 |                 LUT |
 | FDSE     |   20 |        Flop & Latch |
 | OBUF     |    9 |                  IO |
 | IBUF     |    3 |                  IO |
