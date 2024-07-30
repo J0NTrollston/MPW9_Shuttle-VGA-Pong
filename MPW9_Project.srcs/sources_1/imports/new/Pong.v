@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+//`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: TinyTapeout 8
 // Engineer: Brandon S. Ramos
@@ -21,24 +21,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 /*
-Input:
-    1. 
-    2.
-    3. 
-    4. 
-    5. 
-    6.
-    7.
-    8.
+Input: N/A
 Output:
     1. h_sync
     2. v_sync
     3. r
     4. g
     5. b
-    6.
-    7.
-    8.
 Bidirectional:
     1. NES_Controller_Left[0] data
     2. NES_Controller_Left[1] clock
@@ -46,8 +35,6 @@ Bidirectional:
     4. NES_Controller_Right[0] data
     5. NES_Controller_Right[1] clock
     6. NES_Controller_Right[2] latch
-    7.
-    8.
 */
 
 module Pong(

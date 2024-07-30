@@ -20,7 +20,7 @@ create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk
 
 
 ## LEDs
-#set_property -dict { PACKAGE_PIN T14   IOSTANDARD LVCMOS25 } [get_ports { led[0] }]; #IO_L15P_T2_DQS_13 Sch=led[0]
+set_property -dict { PACKAGE_PIN T14   IOSTANDARD LVCMOS25 } [get_ports { led }]; #IO_L15P_T2_DQS_13 Sch=led[0]
 #set_property -dict { PACKAGE_PIN T15   IOSTANDARD LVCMOS25 } [get_ports { led[1] }]; #IO_L15N_T2_DQS_13 Sch=led[1]
 #set_property -dict { PACKAGE_PIN T16   IOSTANDARD LVCMOS25 } [get_ports { led[2] }]; #IO_L17P_T2_13 Sch=led[2]
 #set_property -dict { PACKAGE_PIN U16   IOSTANDARD LVCMOS25 } [get_ports { led[3] }]; #IO_L17N_T2_13 Sch=led[3]
@@ -31,7 +31,7 @@ create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk
 
 
 ## Buttons
-#set_property -dict { PACKAGE_PIN B22 IOSTANDARD LVCMOS12 } [get_ports { btn[4] }]; #IO_L20N_T3_16 Sch=btnc
+#set_property -dict { PACKAGE_PIN B22 IOSTANDARD LVCMOS12 } [get_ports { reset_n }]; #IO_L20N_T3_16 Sch=btnc
 #set_property -dict { PACKAGE_PIN D22 IOSTANDARD LVCMOS12 } [get_ports { btn[2] }]; #IO_L22N_T3_16 Sch=btnd  Paddle UP (Left)
 #set_property -dict { PACKAGE_PIN C22 IOSTANDARD LVCMOS12 } [get_ports { btn[1] }]; #IO_L20P_T3_16 Sch=btnl
 #set_property -dict { PACKAGE_PIN D14 IOSTANDARD LVCMOS12 } [get_ports { btn[3] }]; #IO_L6P_T0_16 Sch=btnr
@@ -40,7 +40,7 @@ set_property -dict { PACKAGE_PIN G4  IOSTANDARD LVCMOS12 } [get_ports { reset_n 
 
 
 ## Switches
-#set_property -dict { PACKAGE_PIN E22  IOSTANDARD LVCMOS12 } [get_ports { in[7] }]; #IO_L22P_T3_16 Sch=sw[0]
+#set_property -dict { PACKAGE_PIN E22  IOSTANDARD LVCMOS12 } [get_ports { reset_n }]; #IO_L22P_T3_16 Sch=sw[0]
 #set_property -dict { PACKAGE_PIN F21  IOSTANDARD LVCMOS12 } [get_ports { in[6] }]; #IO_25_16 Sch=sw[1]
 #set_property -dict { PACKAGE_PIN G21  IOSTANDARD LVCMOS12 } [get_ports { in[5] }]; #IO_L24P_T3_16 Sch=sw[2]
 #set_property -dict { PACKAGE_PIN G22  IOSTANDARD LVCMOS12 } [get_ports { in[4] }]; #IO_L24N_T3_16 Sch=sw[3]

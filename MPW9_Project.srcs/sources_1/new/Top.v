@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+//`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -22,12 +22,12 @@
 module Top(
     input wire clk,
     input wire reset_n, //A7 FPGA uses active low reset signal
-    
+    output wire led,
     output wire [4:0] out,
     inout wire [5:0] bidir
     );
     
-wire reset = ~reset_n;
+//wire reset = ~reset_n;
 wire pixel_clk;
     
 Pong Pong(
@@ -45,8 +45,9 @@ Resolution: 640x480 @60Hz
 */
 clk_wiz_0 clk_wiz_0(
     .clk_in1(clk),
-    .reset(reset),
+    .reset(1'b0), //no reset otherwise the reset in other modules will not work.
     .clk_out1(pixel_clk)
     );
+assign led = reset_n;
     
 endmodule
