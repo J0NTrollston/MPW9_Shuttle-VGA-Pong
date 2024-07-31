@@ -22,7 +22,7 @@
 module Top(
     input wire clk,
     input wire reset_n, //A7 FPGA uses active low reset signal
-    output wire [4:0] out,
+    output wire [7:0] out,
     inout wire [5:0] bidir
     );
     
